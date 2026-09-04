@@ -1,0 +1,36 @@
+{
+  "major": "计算机科学与技术",
+  "plan": "2022 级培养方案（样例：必修科目 + 选修/任选学分池）",
+  "min_credits": 43,
+  "categories": {
+    "必修": {"required_credits": 33},
+    "选修": {"required_credits": 6},
+    "任选": {"required_credits": 4}
+  },
+  "courses": [
+    {"id": "CS101", "name": "高等数学(一)", "credits": 5, "category": "必修"},
+    {"id": "CS102", "name": "大学英语", "credits": 4, "category": "必修"},
+    {"id": "CS103", "name": "程序设计基础", "credits": 4, "category": "必修"},
+    {"id": "CS104", "name": "数据结构", "credits": 4, "category": "必修"},
+    {"id": "CS105", "name": "操作系统", "credits": 3, "category": "必修"},
+    {"id": "CS106", "name": "计算机网络", "credits": 3, "category": "必修"},
+    {"id": "CS107", "name": "数据库原理", "credits": 3, "category": "必修"},
+    {"id": "CS108", "name": "软件工程", "credits": 2, "category": "必修"},
+    {"id": "CS109", "name": "专业英语", "credits": 2, "category": "必修"},
+    {"id": "CS110", "name": "毕业设计", "credits": 3, "category": "必修"},
+    {"id": "CS201", "name": "机器学习导论", "credits": 2, "category": "选修"},
+    {"id": "CS202", "name": "云计算技术", "credits": 2, "category": "选修"},
+    {"id": "CS203", "name": "嵌入式系统", "credits": 2, "category": "选修"},
+    {"id": "CS204", "name": "人工智能原理", "credits": 2, "category": "选修"},
+    {"id": "CS205", "name": "大数据技术", "credits": 2, "category": "选修"},
+    {"id": "GE101", "name": "世界古代史", "credits": 2, "category": "任选"},
+    {"id": "GE102", "name": "音乐鉴赏", "credits": 2, "category": "任选"},
+    {"id": "GE103", "name": "大学生心理健康", "credits": 2, "category": "任选"},
+    {"id": "GE104", "name": "创新创业实践", "credits": 2, "category": "任选"}
+  ],
+  "aliases": [
+    {"name": "高等数学(一)", "alias": ["高等数学", "高数"]},
+    {"name": "大学英语", "alias": ["大学英语I", "英语"]},
+    {"name": "程序设计基础", "alias": ["C语言程序设计", "编程基础"]}
+  ]
+}

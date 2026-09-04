@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>视频标题</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    /* ===== 全局重置 ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px;
+      overflow: hidden;
+      font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    }
+
+    /* ===== 字幕条 ===== */
+    #subtitle-bar {
+      position: absolute;
+      bottom: 56px; left: 50%; transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      padding: 16px 44px;
+      border-radius: 14px;
+      max-width: 1400px;
+      text-align: center;
+      font-size: 38px;
+      color: #FFFFFF;
+      letter-spacing: 0.06em;
+      line-height: 1.6;
+      opacity: 0;
+      z-index: 100;
+    }
+
+    /* ===== 场景容器 ===== */
+    .scene {
+      position: absolute; inset: 0;
+      display: none;
+      align-items: center; justify-content: center;
+      flex-direction: column;
+    }
+
+    /* ================================================================
+       在此处添加各场景的自定义样式
+       例如：.s1-title { font-size: 56px; color: #fff; opacity: 0; }
+       ================================================================ */
+  </style>
+</head>
+<body>
+
+  <!--
+    ⚠️ 关键规则：
+    1. composition div 必须设置 data-start="0"
+    2. <audio> 元素必须放在 composition 内部
+    3. 所有 UI 元素（字幕、场景等）必须在 composition 内部
+    4. 预览控件用 JS 动态创建，避免被 lint 捕获
+  -->
+  <div data-composition-id="main" data-width="1920" data-height="1080" data-start="0">
+    <audio id="narration" src="narration.wav" data-start="0"></audio>
+    <div id="subtitle-bar"></div>
+
+    <!-- TODO: 在此添加场景 section -->
+
+  </div>
+
+  <script>
+    // ===== 字幕数据 =====
+    var SUBTITLES = [
+      // TODO: 填入字幕数据
+      // { index: 1, start: 0.50, end: 5.00, text: "示例字幕文本" },
+    ];
+
+    // ===== Master Timeline =====
+    window.__timelines = {};
+    var master = gsap.timeline({ paused: true });
+    var subBar = document.getElementById("subtitle-bar");
+
+    /* ===== 场景切换（示例）===== */
+    // master.set("#s1", { display: "flex" }, 0);
+    // master.set("#s1", { display: "none" }, SCENE_END_TIME);
+
+    /* ===== 文字动画（示例）===== */
+    // master.fromTo("#s1-title",
+    //   { opacity: 0, y: 30 },
+    //   { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+    //   0.5
+    // );
+
+    /* ===== 字幕同步 ===== */
+    SUBTITLES.forEach(function(sub) {
+      master.call(function() {
+        subBar.textContent = sub.text;
+        subBar.style.opacity = "1";
+      }, [], sub.start);
+      master.call(function() {
+        subBar.style.opacity = "0";
+      }, [], sub.end);
+    });
+
+    window.__timelines["main"] = master;
+
+    /* ===== 预览模式（仅浏览器，渲染时跳过）=====
+       ⚠️ 关键：用 window.__hf_rendering 守卫，防止 lint 报错 */
+    if (typeof window.__hf_rendering === "undefined") {
+      (function() {
+        // 自适应缩放
+        var scaleX = window.innerWidth / 1920;
+        var scaleY = window.innerHeight / 1080;
+        var scale = Math.min(scaleX, scaleY);
+        var comp = document.querySelector("[data-composition-id]");
+        comp.style.transform = "scale(" + scale + ")";
+        comp.style.transformOrigin = "top left";
+        comp.style.position = "absolute";
+        comp.style.left = (window.innerWidth - 1920 * scale) / 2 + "px";
+        comp.style.top = (window.innerHeight - 1080 * scale) / 2 + "px";
+
+        // 动态创建预览控件（不在 HTML 中，避免 lint 误判）
+        var ctrl = document.createElement("div");
+        ctrl.id = "preview-ctrl";
+        ctrl.innerHTML = [
+          '<button id="btn-play" style="padding:8px 18px;border:none;border-radius:8px;',
+          'font-size:14px;cursor:pointer;background:rgba(0,0,0,0.75);color:#fff;">',
+          '⏸ 暂停</button>',
+          '<button id="btn-restart" style="padding:8px 18px;border:none;border-radius:8px;',
+          'font-size:14px;cursor:pointer;background:rgba(0,0,0,0.75);color:#fff;">',
+          '↺ 重播</button>',
+          '<span id="time-display" style="color:#fff;font-size:13px;font-family:monospace;">0:00</span>'
+        ].join("");
+        ctrl.style.cssText =
+          "position:fixed;bottom:16px;right:16px;z-index:9999;display:flex;gap:10px;align-items:center;";
+        document.body.appendChild(ctrl);
+
+        // 用 JS Audio API 加载旁白（不操作 DOM audio 元素，避免 lint）
+        var narrationAudio = new Audio("narration.wav");
+        var playing = true;
+        master.play();
+        narrationAudio.play().catch(function(){});
+
+        document.getElementById("btn-play").addEventListener("click", function() {
+          if (playing) {
+            master.pause(); narrationAudio.pause();
+            this.textContent = "▶ 播放";
+          } else {
+            master.play(); narrationAudio.play().catch(function(){});
+            this.textContent = "⏸ 暂停";
+          }
+          playing = !playing;
+        });
+
+        document.getElementById("btn-restart").addEventListener("click", function() {
+          master.restart();
+          narrationAudio.currentTime = 0;
+          narrationAudio.play().catch(function(){});
+          playing = true;
+          document.getElementById("btn-play").textContent = "⏸ 暂停";
+        });
+
+        gsap.ticker.add(function() {
+          var t = master.time();
+          var m = Math.floor(t / 60);
+          var s = Math.floor(t % 60);
+          document.getElementById("time-display").textContent =
+            m + ":" + (s < 10 ? "0" : "") + s;
+        });
+      })();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "units": [
+    {"name": "云智科技", "capacity": 2, "windows": ["w1", "w2"]},
+    {"name": "星海数据", "capacity": 2, "windows": ["w1"]},
+    {"name": "拓普自动化", "capacity": 2, "majors": ["自动化"], "windows": ["w2"]}
+  ],
+  "windows": [{"id": "w1", "label": "第1-4周"}, {"id": "w2", "label": "第5-8周"}],
+  "assignments": [
+    {"student": "李明", "unit": "云智科技", "window": "w1"},
+    {"student": "王芳", "unit": "云智科技", "window": "w1"},
+    {"student": "张强", "unit": "云智科技", "window": "w1"},
+    {"student": "刘洋", "unit": "云智科技", "window": "w1"},
+    {"student": "陈静", "unit": "星海数据", "window": "w1"},
+    {"student": "陈静", "unit": "拓普自动化", "window": "w2"},
+    {"student": "赵磊", "unit": "外包单位", "window": "w3"}
+  ]
+}

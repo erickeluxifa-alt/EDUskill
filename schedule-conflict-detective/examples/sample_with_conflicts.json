@@ -1,0 +1,50 @@
+{
+  "schedule": [
+    {
+      "course": "高等数学A",
+      "teacher": "张明",
+      "room": "教1-101",
+      "class": "计算机2401",
+      "weeks": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+      "weekday": 1,
+      "periods": [1, 2]
+    },
+    {
+      "course": "概率论",
+      "teacher": "张明",
+      "room": "教1-201",
+      "class": "数学2401",
+      "weeks": [3,4,5,6,7,8],
+      "weekday": 1,
+      "periods": [2, 3]
+    },
+    {
+      "course": "数据结构",
+      "teacher": "刘洋",
+      "room": "教1-101",
+      "class": "计算机2402",
+      "weeks": [1,2,3,4,5,6],
+      "weekday": 1,
+      "periods": [1]
+    },
+    {
+      "course": "<script>alert('xss')</script>",
+      "teacher": "测试老师",
+      "room": "教1-102",
+      "class": "测试班级",
+      "week_start": 1,
+      "week_end": 4,
+      "weekday": 2,
+      "periods": [9]
+    },
+    {
+      "course": "操作系统",
+      "teacher": "陈强",
+      "room": "实验楼A301",
+      "class": "软件2401",
+      "weeks": "9-12",
+      "weekday": 4,
+      "periods": [7, 8]
+    }
+  ]
+}

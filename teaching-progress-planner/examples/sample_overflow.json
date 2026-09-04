@@ -1,0 +1,21 @@
+{
+  "course": { "name": "大学英语（三）", "code": "FL103", "total_hours": 60, "weekly_hours": 4 },
+  "semester": {
+    "start_date": "2026-09-07",
+    "total_weeks": 16,
+    "exam_weeks": [16],
+    "holidays": [
+      { "weeks": [4, 5], "note": "国庆和中秋节" }
+    ]
+  },
+  "units": [
+    { "name": "Unit 1 大学生活", "hours": 8 },
+    { "name": "Unit 2 时间管理", "hours": 8 },
+    { "name": "Unit 3 文化差异", "hours": 8 },
+    { "name": "Unit 4 科技的利与弊", "hours": 8 },
+    { "name": "Unit 5 环境与责任", "hours": 8 },
+    { "name": "Unit 6 就业与选择", "hours": 8 },
+    { "name": "期中复习与测试", "hours": 4 },
+    { "name": "期末综合复习", "hours": 8 }
+  ]
+}

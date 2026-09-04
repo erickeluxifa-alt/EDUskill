@@ -1,0 +1,118 @@
+{
+ "exams": [
+  {
+   "course": "高等数学",
+   "date": "2026-07-06",
+   "slot": "上午",
+   "classes": [
+    {
+     "name": "计科2301",
+     "count": 78
+    }
+   ]
+  },
+  {
+   "course": "高等数学",
+   "date": "2026-07-06",
+   "slot": "下午",
+   "classes": [
+    {
+     "name": "软件2301",
+     "count": 70
+    }
+   ]
+  },
+  {
+   "course": "线性代数",
+   "date": "2026-07-07",
+   "slot": "上午",
+   "classes": [
+    {
+     "name": "计科2301",
+     "count": 78
+    },
+    {
+     "name": "软件2301",
+     "count": 70
+    }
+   ]
+  },
+  {
+   "course": "英语听说",
+   "date": "2026-07-08",
+   "slot": "上午",
+   "classes": [
+    {
+     "name": "英语2301",
+     "count": 30
+    }
+   ]
+  }
+ ],
+ "rooms": [
+  {
+   "id": "教3-101",
+   "capacity": 80
+  },
+  {
+   "id": "教3-102",
+   "capacity": 60
+  },
+  {
+   "id": "教3-201",
+   "capacity": 40
+  }
+ ],
+ "invigilators": [
+  {
+   "name": "教师A",
+   "teach_classes": [
+    "计科2301"
+   ],
+   "max_per_day": 2
+  },
+  {
+   "name": "教师B",
+   "teach_classes": [
+    "软件2301"
+   ],
+   "max_per_day": 2
+  },
+  {
+   "name": "教师C",
+   "max_per_day": 2,
+   "unavailable": [
+    {
+     "date": "2026-07-07",
+     "slot": "上午"
+    }
+   ]
+  },
+  {
+   "name": "教师D",
+   "max_per_day": 2
+  },
+  {
+   "name": "教师E",
+   "max_per_day": 2
+  },
+  {
+   "name": "教师F",
+   "max_per_day": 1
+  },
+  {
+   "name": "教师G",
+   "max_per_day": 2
+  },
+  {
+   "name": "教师H",
+   "max_per_day": 2
+  }
+ ],
+ "rules": {
+  "avoid_own_class": true,
+  "min_invigilators_per_room": 1,
+  "students_per_invigilator": 45,
+  "max_invigilators_per_room": 3
+ }
+}

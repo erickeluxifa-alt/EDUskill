@@ -1,0 +1,29 @@
+{
+  "students": [
+    {"name": "g01", "options": ["A单位", "B单位"]},
+    {"name": "g02", "options": ["A单位", "B单位"]},
+    {"name": "g03", "options": ["A单位", "B单位"]},
+    {"name": "g04", "options": ["A单位", "B单位"]},
+    {"name": "g05", "options": ["A单位", "B单位"]},
+    {"name": "g06", "options": ["A单位", "B单位"]},
+    {"name": "g07", "options": ["A单位", "B单位"]},
+    {"name": "g08", "options": ["A单位", "B单位"]},
+    {"name": "g09", "options": ["A单位", "B单位"]},
+    {"name": "g10", "options": ["A单位", "B单位"]},
+    {"name": "g11", "options": ["A单位", "B单位"]},
+    {"name": "g12", "options": ["A单位", "B单位"]},
+    {"name": "g13", "options": ["A单位", "B单位"]},
+    {"name": "g14", "options": ["A单位", "B单位"]},
+    {"name": "g15", "options": ["A单位", "B单位"]},
+    {"name": "g16", "options": ["A单位", "B单位"]},
+    {"name": "g17", "options": ["A单位", "B单位"]},
+    {"name": "g18", "options": ["A单位", "B单位"]},
+    {"name": "g19", "options": ["A单位", "B单位"]},
+    {"name": "g20", "options": ["A单位", "B单位"]}
+  ],
+  "units": [
+    {"name": "A单位", "capacity": 10, "windows": ["w1"]},
+    {"name": "B单位", "capacity": 10, "windows": ["w1"]}
+  ],
+  "windows": [{"id": "w1", "label": "唯一期次"}]
+}

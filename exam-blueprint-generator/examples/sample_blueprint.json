@@ -1,0 +1,20 @@
+{
+  "course": "Python程序设计",
+  "exam": "2026年春季学期期末考试",
+  "total_marks": 100,
+  "knowledge_points": [
+    {"name": "基础语法", "weight": 0.2, "level": "了解"},
+    {"name": "函数与模块", "weight": 0.25, "level": "理解"},
+    {"name": "数据结构", "weight": 0.3, "level": "应用"},
+    {"name": "面向对象", "weight": 0.15, "level": "分析"},
+    {"name": "异常与文件", "weight": 0.1, "level": "综合"}
+  ],
+  "question_types": [
+    {"name": "单项选择题", "count": 10, "marks": 2, "difficulty": "易"},
+    {"name": "判断题", "count": 10, "marks": 1, "difficulty": "易"},
+    {"name": "填空题", "count": 10, "marks": 2, "difficulty": "中"},
+    {"name": "简答题", "count": 4, "marks": 5, "difficulty": "中"},
+    {"name": "综合应用题", "count": 3, "marks": 10, "difficulty": "难"}
+  ],
+  "difficulty_target": {"易": 0.3, "中": 0.5, "难": 0.2}
+}

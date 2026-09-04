@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+.DS_Store
+*.log
+*.tmp
+.env
+*_managed.json
+
+# 内部平台技能（非本人开发，不公开）
+ku-doc-manage/
+famou-workflow-router/
+domain-analysis-execution/
+skill-recommender/

@@ -1,0 +1,8 @@
+{
+  "students": [
+    {"name": "甲", "options": ["幽灵单位"]}
+  ],
+  "units": [
+    {"name": "A单位", "capacity": 5}
+  ]
+}

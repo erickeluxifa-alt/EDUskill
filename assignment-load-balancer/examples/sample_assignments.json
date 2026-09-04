@@ -1,0 +1,8 @@
+{
+  "assignments": [
+    {"title": "函数单元作业", "course": "数学", "class_name": "高一1班", "due_date": "2026-08-24", "estimated_hours": 3, "priority": 4},
+    {"title": "英语阅读报告", "course": "英语", "class_name": "高一1班", "due_date": "2026-08-25", "estimated_hours": 3},
+    {"title": "物理实验预习", "course": "物理", "class_name": "高一1班", "due_date": "2026-08-26", "estimated_hours": 2},
+    {"title": "历史材料题", "course": "历史", "class_name": "高一2班", "due_date": "2026-08-24", "estimated_hours": 1}
+  ]
+}

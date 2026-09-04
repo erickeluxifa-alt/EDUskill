@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "exam": "考试",
+    "course": "",
+    "class_name": "",
+    "date": "",
+    "total_marks": 100.0,
+    "pass_rate": 0.6,
+    "excellent_rate": 0.85,
+    "low_rate": 0.3
+  },
+  "questions": [
+    {
+      "id": "A",
+      "marks": 5.0,
+      "kp": "集合",
+      "type": "—",
+      "text": "",
+      "p": 0.58,
+      "d": 0.22,
+      "cls": "应讲",
+      "method": "先点易错点，再由学生自查订正",
+      "urgency": 0.34,
+      "minutes": 21.1,
+      "in_teach": true,
+      "variant": "将题干数值替换（非整数/带单位/加大数据量），重算并核对结果（围绕「集合」）"
+    },
+    {
+      "id": "B",
+      "marks": 5.0,
+      "kp": "函数",
+      "type": "—",
+      "text": "",
+      "p": 0.91,
+      "d": 0.1,
+      "cls": "略讲",
+      "method": "小组互查订正，仅口头点关键易错",
+      "urgency": 0.094,
+      "minutes": 0.0,
+      "in_teach": false,
+      "variant": "把条件与结论互换，改编成逆向题让学生反推（围绕「函数」）"
+    }
+  ],
+  "kps": [
+    {
+      "kp": "集合",
+      "qids": [
+        "A"
+      ],
+      "loss": 2.1,
+      "marks": 5.0
+    },
+    {
+      "kp": "函数",
+      "qids": [
+        "B"
+      ],
+      "loss": 0.44999999999999984,
+      "marks": 5.0
+    }
+  ],
+  "warns": [
+    "未提供学生名单：分层辅导仅给出分层标准；传入成绩单 CSV 可生成具体名单"
+  ],
+  "timeline": [
+    {
+      "name": "阶段反馈",
+      "minutes": 3.0
+    },
+    {
+      "name": "自查自纠",
+      "minutes": 5.0
+    },
+    {
+      "name": "核心讲评",
+      "minutes": 21.1
+    },
+    {
+      "name": "变式训练",
+      "minutes": 8.2
+    },
+    {
+      "name": "分层辅导",
+      "minutes": 4.8
+    },
+    {
+      "name": "收尾与作业",
+      "minutes": 3.0
+    }
+  ],
+  "counts": {
+    "total": 2,
+    "must": 0,
+    "should": 1,
+    "skip": 1,
+    "teach": 1,
+    "teach_minutes": 21.1
+  },
+  "session_min": 45.0,
+  "tier_list": [],
+  "tier_advice": {
+    "A": "完成错题订正 + 拓展变式，讲评课担任组内小讲师",
+    "B": "错题订正 + 课上变式题全做，错题进错题本",
+    "C": "结对帮扶 + 精讲题重做，优先掌握必讲知识点，完成后过一小测"
+  },
+  "tier_note": "未提供成绩单：仅给出分层标准（A≥优秀线 / B≥及格线 / C<及格线）"
+}

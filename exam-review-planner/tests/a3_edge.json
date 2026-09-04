@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "exam": "初二数学月考",
+    "course": "数学",
+    "class_name": "初二(3)班",
+    "date": "2026-08-25",
+    "total_marks": 100,
+    "pass_rate": 0.6,
+    "excellent_rate": 0.85,
+    "low_rate": 0.3,
+    "version": "1.0.0"
+  },
+  "questions": [
+    {
+      "id": "1",
+      "marks": 10,
+      "kp": "概念",
+      "p": 0.0,
+      "d": 0.0
+    },
+    {
+      "id": "2",
+      "marks": 10,
+      "kp": "运算",
+      "p": 1.0,
+      "d": 0.8
+    },
+    {
+      "id": "x",
+      "marks": 0,
+      "kp": "无效满分",
+      "p": 0.5
+    }
+  ],
+  "students": []
+}

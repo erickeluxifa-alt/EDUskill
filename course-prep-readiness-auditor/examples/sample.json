@@ -1,0 +1,19 @@
+{
+  "course": "教育测量基础",
+  "lesson": "抽样误差",
+  "audience": "本科二年级",
+  "duration_minutes": 45,
+  "objectives": [
+    "解释抽样误差的含义",
+    "能用样本数据判断估计是否稳定"
+  ],
+  "activities": [
+    {"name": "概念导入", "minutes": 8, "objective_refs": ["1"]},
+    {"name": "小组抽样实验", "minutes": 25, "objective_refs": ["2"]}
+  ],
+  "assessments": [
+    {"name": "出口条", "description": "写出误差来源并解释结果", "objective_refs": ["1"]}
+  ],
+  "resources": ["抽样数据表", "投影设备"],
+  "differentiation": ["为先备不足学生提供术语卡"]
+}

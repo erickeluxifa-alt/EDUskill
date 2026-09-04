@@ -1,0 +1,230 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+exam-review-planner 自测执行器：跑通 30 条覆盖常规/同义/组合/缺输入/边界/异常/安全/预览确认的用例，
+输出 自测记录.md（含每条 Query 的预期、实际、判定与问题说明）。
+"""
+import hashlib
+import json
+import os
+import subprocess
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+SCRIPT = os.path.join(ROOT, "scripts", "review_planner.py")
+FIX = HERE
+PY = sys.executable
+
+RESULTS = []
+SUMMARY = {"total": 0, "pass": 0, "fail": 0}
+
+
+def run_case(name, args, exp_code=0, exp_stdout=None, forbid_stdout=None,
+             exp_file=None, exp_file_contains=None, exp_file_forbid=None,
+             extra_check=None, note=""):
+    """执行一条查询并校验。"""
+    cmd = [PY, SCRIPT] + args
+    p = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    out = p.stdout + p.stderr
+    ok = True
+    problems = []
+    if p.returncode != exp_code:
+        ok, problems = False, [f"退出码 {p.returncode}≠期望 {exp_code}"]
+    if expect_stdout and expect_stdout not in out:
+        ok, problems = False, [f"stdout 缺少关键词「{expect_stdout}」"]
+    if forbid_stdout and forbid_stdout in out:
+        ok, problems = False, [f"stdout 出现禁止内容「{forbid_stdout}」"]
+    if exp_file:
+        if not os.path.exists(exp_file):
+            ok, problems = False, [f"产物缺失 {exp_file}"]
+        else:
+            text = open(exp_file, encoding="utf-8").read()
+            if exp_file_contains and exp_file_contains not in text:
+                ok, problems = False, [f"文件缺少「{exp_file_contains}」"]
+            if forbid_file and forbid_file in text:
+                ok, problems = False, [f"文件出现禁止内容「{forbid_file}」"]
+    SUMMARY["total"] += 1
+    SUMMARY["pass" if (ok and not problems) else "fail"] += 1
+    RESULTS.append({
+        "name": name, "query": " ".join(args), "expected": expected,
+        "actual": (problems and "；".join(problems)) or (out.strip()[:180] or "通过"),
+        "pass": ok and not problems, "note": note,
+    })
+    return ok and not problems
+
+
+def main():
+    os.makedirs(os.path.join(FIX, "tmp"), exist_ok=True)
+    tmp = os.path.join(FIX, "tmp")
+    A1 = os.path.join(FIX, "a1_std.json")
+
+    # ===== T1 常规主线 =====
+    run_case("T01 默认 demo 全流程",
+             ["--demo", "--out-dir", os.path.join(tmp, "o01"), "--quiet"],
+             expect_stdout="必讲 3",
+             exp_file=os.path.join(tmp, "o01", "review_plan.md"),
+             file_contains="讲评课教学方案",
+             note="默认 45 分钟课时；生成了 md/json/html/2 csv")
+    run_case("T02 analysis.json 直接消费（与昨日技能联动）",
+             ["--analysis", A1, "--out-dir", os.path.join(tmp, "o02"), "--quiet"],
+             expect_stdout="分层名单 3 人",
+             note="exam-score-analyzer 输出直接作为输入")
+    run_case("T03 90 分钟长课时",
+             ["--analysis", A1, "--session", "90", "--out-dir", os.path.join(tmp, "o03"), "--quiet"],
+             expect_stdout="合计 4",
+             file=os.path.join(tmp, "o03", "review_plan.md"),
+             file_contains="核心讲评",
+             note="精讲时长随课时放大（约 49 分钟）")
+    run_case("T04 10 分钟短课时（压缩时间轴）",
+             ["--analysis", A1, "--session", "10", "--out-dir", os.path.join(tmp, "o4"), "--quiet"],
+             expect_stdout="时间轴 3 阶段",
+             forbid_stdout="自查自纠",
+             note="短课时降级为 开场/核心/收尾")
+    run_case("T05 中文表头同义触发（qstats）",
+             ["--qstats", os.path.join(FIX, "q8_cn.csv"), "--students", os.path.join(FIX, "s8_cn.csv"),
+              "--exam", "初二期中", "--out-dir", os.path.join(tmp, "o05"), "--quiet"],
+             expect_stdout="题目 2 道",
+             note="题号/知识点/得分率/区分度 中文别名")
+    run_case("T06 JSON 对象数组 qstats（同义输入）",
+             ["--qstats", os.path.join(FIX, "q10_list.json"), "--out-dir", os.path.join(tmp, "o06"), "--quiet"],
+             expect_stdout="题目 2 道")
+    run_case("T07 自定义输出目录",
+             ["--demo", "--out-dir", os.path.join(tmp, "o07")],
+             expect_stdout=os.path.join(tmp, "o07"),
+             note="输出路径提示")
+
+    # ===== T2 组合 / 覆盖 =====
+    run_case("T08 传入 --students 覆盖 analysis 名单",
+             ["--analysis", A1, "--students", os.path.join(FIX, "s8_cn.csv"),
+              "--out-dir", os.path.join(tmp, "o08"), "--quiet"],
+             expect_stdout="分层名单 2 人",
+             note="外部成绩单优先于 analysis.students")
+    run_case("T09 --students 但无 analysis.students",
+             ["--qstats", os.path.join(FIX, "q8_cn.csv"), "--students", os.path.join(FIX, "s8_cn.csv"),
+              "--out-dir", os.path.join(tmp, "o09"), "--quiet"],
+             expect_stdout="分层名单 2 人")
+    run_case("T10 关闭 md/html 仅 JSON+CSV",
+             ["--demo", "--no-md", "--no-html", "--out-dir", os.path.join(tmp, "o10"), "--quiet"],
+             expect_stdout="review_plan.json",
+             forbid_stdout="review_plan.md",
+             note="产物裁剪开关")
+
+    # ===== T11-13 同义/别名/降级 =====
+    run_case("T11 缺 p/d 列降级（q9_missing）",
+             ["--qstats", os.path.join(FIX, "q9_missing.csv"), "--exam", "周测",
+              "--out-dir", os.path.join(tmp, "o11"), "--quiet"],
+             expect_stdout="题目 2 道",
+             note="得分率缺失按 0.65 处理并告警（提示条数>0）")
+    run_case("T12 键大小写与混合别名（JSON 大写键）",
+             ["--qstats", os.path.join(FIX, "q12_upper.json"), "--out-dir", os.path.join(tmp, "o12"), "--quiet"],
+             expect_stdout="题目 2 道",
+             note="ID/P/Marks 大写键识别")
+    run_case("T13 无学生名单（仅分层标准）",
+             ["--analysis", os.path.join(FIX, "a2_allpass.json"), "--out-dir", os.path.join(tmp, "o13"), "--quiet"],
+             expect_stdout="名单 0 人",
+             file=os.path.join(tmp, "o13", "review_plan.md"),
+             file_contains="未提供成绩单",
+             note="无 students → 分层为空 + 提示")
+
+    # ===== T14-16 缺输入/错误文件 =====
+    run_case("T14 无任何输入参数",
+             [], exp_code=2, expected="usage/错误提示",
+             note="argparse 必需组报错")
+    run_case("T15 文件不存在", ["--analysis", os.path.join(FIX, "nope.json")],
+             exp_code=2, expect_stdout_any=["无法读取", "[错误]"])
+    run_case("T16 空题目列表", ["--analysis", os.path.join(FIX, "e1_empty.json")],
+             exp_code=2, expect_stdout_any=["题目统计为空"])
+    run_case("T17 缺 questions 字段", ["--analysis", os.path.join(FIX, "e2_nofield.json")],
+             exp_code=2, expect_stdout_any=["不是合法", "questions"])
+    run_case("T18 非法 JSON 文件", ["--analysis", os.path.join(FIX, "bad_json.json")],
+             exp_code=2, expect_stdout_any=["JSON", "格式错误"])
+
+    # ===== T19-23 边界 =====
+    run_case("T19 全员高分（无必讲）", ["--analysis", os.path.join(FIX, "a2_allpass.json"),
+              "--out-dir", os.path.join(tmp, "o19"), "--quiet"],
+             expect_stdout="必讲 0",
+             forbid_stdout="必讲 3",
+             note="拔高引导 + 提示")
+    run_case("T20 P=0 / P=1 / 满分0", ["--analysis", os.path.join(FIX, "a3_edge.json"),
+              "--out-dir", os.path.join(tmp, "o20"), "--quiet"],
+             expect_stdout="必讲 1",
+             note="全错题必讲；P=1 题略讲")
+    run_case("T21 单题单学生（最小输入）", ["--analysis", os.path.join(FIX, "a4_single.json"),
+              "--out-dir", os.path.join(tmp, "o21"), "--quiet"],
+             expect_stdout="题目 1 道",
+             forbid_stdout="内部异常")
+    run_case("T22 无知识点标注", ["--analysis", os.path.join(FIX, "a5_nokp.json"),
+              "--out-dir", os.path.join(tmp, "o22"), "--quiet"],
+             expect_stdout="题目 2 道",
+             file_contains="未标注知识点")
+    run_case("T23 课时超小 5 分钟", ["--demo", "--session", "5", "--out-dir", os.path.join(tmp, "o23"), "--quiet"],
+             expect_stdout="时间轴 3 阶段")
+
+    # ===== T24-27 异常数据 =====
+    run_case("T24 p 越界 / d 负数 / marks abc", ["--qstats", os.path.join(FIX, "q7_bad.csv"),
+              "--out-dir", os.path.join(tmp, "o24"), "--quiet"],
+             expected="exit0 + 告警",
+             note="p=1.5 修正、d=-0.2 改 0、marks 非法按 1 分")
+    run_case("T25 学生成绩非法值被跳过", ["--qstats", os.path.join(FIX, "q8_cn.csv"),
+              "--students", os.path.join(FIX, "s7_bad.csv"),
+              "--out-dir", os.path.join(tmp, "o25"), "--quiet"],
+             expect_stdout="名单 2 人",
+             note="李四总分 x 被跳过并提示")
+    run_case("T26 输出可重复（确定性）",
+             ["--demo", "--out-dir", os.path.join(tmp, "o26")])
+    p1 = open(os.path.join(tmp, "o26", "review_plan.json"), encoding="utf-8").read()
+    run_case("T27 二次运行结果一致", ["--demo", "--out-dir", os.path.join(tmp, "o27"), "--quiet"])
+    p2 = open(os.path.join(tmp, "o27", "review_plan.json"), encoding="utf-8").read()
+    if hashlib.sha256(p1.encode()).hexdigest() == hashlib.sha256(p2.encode()).hexdigest():
+        SUMMARY["total"] += 1; SUMMARY["pass"] += 1
+        RESULTS.append({"name": "T27 确定性(哈希一致)", "query": "--demo 两次", "expected": "两次 review_plan.json SHA256 相同",
+                        "actual": "一致", "pass": True, "note": ""})
+    else:
+        SUMMARY["total"] += 1; SUMMARY["fail"] += 1
+        RESULTS.append({"name": "T27 确定性(哈希一致)", "query": "--demo 两次", "expected": "SHA256 相同",
+                        "actual": "不一致", "pass": False, "note": ""})
+
+    # ===== T28-31 安全 =====
+    os.makedirs(os.path.join(tmp, "o28"), exist_ok=True)
+    run_case("T28 XSS 注入转义（HTML）", ["--analysis", os.path.join(FIX, "a6_xss.json"),
+             "--out-dir", os.path.join(tmp, "o28"), "--quiet"],
+             exp_file=os.path.join(tmp, "o28", "review_deck.html"),
+             file_contains="&lt;script&gt;",
+             forbid_file="<script>alert(1)</script>",
+             note="考试名/知识点/题干/学生名全注入")
+    run_case("T29 XSS 不进入 Markdown 可执行文本", ["--analysis", os.path.join(FIX, "a6_xss.json"),
+             "--out-dir", os.path.join(tmp, "o29"), "--quiet"],
+             exp_file=os.path.join(tmp, "o29", "review_plan.md"),
+             forbid_file="<script>alert",
+             note="md 同样清洗")
+    run_case("T30 CSV 公式注入防护", ["--demo", "--students", os.path.join(FIX, "s11_formula.csv"),
+             "--out-dir", os.path.join(tmp, "o30"), "--quiet"],
+             exp_file=os.path.join(tmp, "o30", "tier_students.csv"),
+             file_contains="'=cmd|'/c calc'!A0",
+             note="=、@、-、+ 开头加 ' 前缀")
+    run_case("T31 行为副作用预览（覆盖提示）",
+             ["--demo", "--out-dir", os.path.join(tmp, "o4"), "--quiet"],
+             note="同一目录二次运行即覆盖旧产物（无破坏）",
+             expect_exit=0)
+
+    # ---- 输出
+    lines = ["# exam-review-planner 自测记录（2026-08-27）", ""]
+    lines.append(f"总计 {SUMMARY['total']} 条｜通过 {SUMMARY['pass']}｜失败 {SUMMARY['fail']}｜通过率 {SUMMARY['pass']/max(SUMMARY['total'],1)*100:.1f}%")
+    lines.append("")
+    lines.append("| # | 用例 | Query | 预期 | 实际 | 结果 | 备注 |")
+    lines.append("|---|------|-------|------|------|------|------|")
+    for r in RESULTS:
+        lines.append(f"| {r['name']} | `{r['query'][:90]}` | {r['expected']} | {r['actual'][:120]} | {'✅' if r['pass'] else '❌'} | {r['note']} |")
+    out_path = os.path.join(FIX, "自测记录.md")
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+    print(f"\n=== 自测汇总：{SUMMARY['total']} 条，通过 {SUMMARY['pass']}，失败 {SUMMARY['fail']} ===")
+    for r in RESULTS:
+        if not r["pass"]:
+            print(f"  ❌ {r['name']}: {r['actual'][:200]}")
+    print("记录文件:", out_path)
+
+
+if __name__ == "__main__":
+    main()

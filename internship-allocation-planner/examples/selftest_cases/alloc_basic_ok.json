@@ -1,0 +1,19 @@
+{
+  "students": [
+    {"name": "李明", "class": "计科2301", "major": "计算机", "options": ["云智科技", "星云软件"], "windows": ["w1", "w2"]},
+    {"name": "王芳", "class": "计科2301", "major": "计算机", "options": ["云智科技", "星海数据"], "windows": ["w1"]},
+    {"name": "张强", "class": "软件2302", "major": "软件", "options": ["星云软件", "云智科技"], "windows": ["w2"]},
+    {"name": "刘洋", "class": "自动化2301", "major": "自动化", "options": ["拓普自动化", "云智科技"], "windows": ["w1", "w2"]},
+    {"name": "陈静", "class": "会计2301", "major": "会计", "options": ["星海数据"], "windows": ["w1", "w2"]},
+    {"name": "赵磊", "class": "机械2301", "major": "机械", "options": ["拓普自动化"], "windows": ["w2"]}
+  ],
+  "units": [
+    {"name": "云智科技", "capacity": 2, "windows": ["w1", "w2"]},
+    {"name": "星海数据", "capacity": 2, "majors": ["会计", "计算机"], "windows": ["w1", "w2"]},
+    {"name": "拓普自动化", "capacity": 1, "majors": ["自动化", "机械"], "windows": ["w1", "w2"]}
+  ],
+  "windows": [
+    {"id": "w1", "label": "第1-4周"},
+    {"id": "w2", "label": "第5-8周"}
+  ]
+}

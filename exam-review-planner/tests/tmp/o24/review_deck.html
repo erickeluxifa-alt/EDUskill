@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>考试</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#f2f5f9;color:#2a3546;font-size:14px}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}
+h1{font-size:21px;margin:0 0 4px}h2{font-size:16px;margin:22px 0 8px;color:#1f3a57}
+.sub{color:#6b7c8e;margin-bottom:10px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.st{flex:1 1 120px;background:#fff;border-radius:10px;border:1px solid #e3e9f0;padding:10px 14px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.st b{display:block;font-size:19px;color:#1f3a57}
+.tl-wrap{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.tl{background:#e8eef6;border-radius:20px;padding:5px 12px;font-size:12px;color:#33506e}
+.tl-n{font-weight:600}.tl-m{color:#c0392b;margin-left:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+.card{background:#fff;border-radius:12px;border:1px solid #e3e9f0;border-left:6px solid #7b9e6b;padding:12px}
+.card.q-必讲{border-left-color:#c0392b}.card.q-应讲{border-left-color:#e67e22}.card.q-略讲{border-left-color:#8fa8bf}
+.ch{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:600}
+.qt{color:#7a8ba0;font-weight:400;font-size:13px}
+.tag{margin-left:auto;background:#eef2f6;border-radius:12px;padding:2px 10px;font-size:12px;color:#43536b}
+.bar{height:8px;background:#edf1f5;border-radius:4px;margin:9px 0 7px;overflow:hidden}
+.bar i{display:block;height:100%;background:#2d7fb8;border-radius:4px}
+.meta{color:#7a8ba0;font-size:12px}.kp{font-weight:600;margin:6px 0 2px}
+.txt{color:#55677d;font-size:13px;margin:4px 0}
+.how,.va,.mm{font-size:13px;margin:5px 0;line-height:1.55}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;margin:12px 0}
+th,td{border-bottom:1px solid #edf1f5;padding:8px 10px;text-align:left}th{background:#eef3f8}
+.warn{background:#fdf0ee;border:1px solid #f3cfc8;border-radius:8px;padding:10px 14px;margin-top:14px}
+@media(max-width:640px){h1{font-size:18px}.grid{grid-template-columns:1fr}.st{flex:1 1 40%}}
+@media print{body{background:#fff}.card{break-inside:avoid}}
+</style></head>
+<body><div class="wrap">
+<h1>考试</h1>
+<div class="sub"> ·  ·  · 本节 45 分钟</div>
+<div class="stats">
+<div class="st"><b>3</b>总题数</div>
+<div class="st"><b>1</b>必讲题</div>
+<div class="st"><b>1</b>应讲题</div>
+<div class="st"><b>1</b>略讲题</div>
+<div class="st"><b>21′</b>精讲时长</div>
+</div>
+<h2>⏱ 时间轴</h2>
+<div class="tl-wrap"><div class="tl"><span class="tl-n">阶段反馈</span><span class="tl-m">3′</span></div><div class="tl"><span class="tl-n">自查自纠</span><span class="tl-m">5′</span></div><div class="tl"><span class="tl-n">核心讲评</span><span class="tl-m">21′</span></div><div class="tl"><span class="tl-n">变式训练</span><span class="tl-m">8′</span></div><div class="tl"><span class="tl-n">分层辅导</span><span class="tl-m">5′</span></div><div class="tl"><span class="tl-n">收尾与作业</span><span class="tl-m">3′</span></div></div>
+<h2>📒 讲评题卡</h2>
+<div class="grid"><div class="card q-应讲">
+  <div class="ch"><b>题2</b><span class="qt">— · 10分</span>
+  <span class="tag">应讲</span></div>
+  <div class="bar"><i style="width:65%"></i></div>
+  <div class="meta">得分率 65.0% · 区分度 1.00</div>
+  <div class="kp">知识点：知识B</div>
+  
+  <div class="how">📌 先点易错点，再由学生自查订正</div>
+  <div class="va">✏️ 将题干数值替换（非整数/带单位/加大数据量），重算并核对结果（围绕「知识B」）</div>
+  <div class="mm">⏱ 精讲 14 分钟</div>
+</div><div class="card q-必讲">
+  <div class="ch"><b>题3</b><span class="qt">— · 1分</span>
+  <span class="tag">必讲</span></div>
+  <div class="bar"><i style="width:40%"></i></div>
+  <div class="meta">得分率 40.0% · 区分度 0.30</div>
+  <div class="kp">知识点：知识C</div>
+  
+  <div class="how">📌 重点讲思路与典型错误，展示错例，追问易错点</div>
+  <div class="va">✏️ 把条件与结论互换，改编成逆向题让学生反推（围绕「知识C」）</div>
+  <div class="mm">⏱ 精讲 7 分钟</div>
+</div><div class="card q-略讲">
+  <div class="ch"><b>题1</b><span class="qt">— · 10分</span>
+  <span class="tag">略讲</span></div>
+  <div class="bar"><i style="width:100%"></i></div>
+  <div class="meta">得分率 100.0% · 区分度 0.00</div>
+  <div class="kp">知识点：知识A</div>
+  
+  <div class="how">📌 小组互查订正，仅口头点关键易错</div>
+  <div class="va">✏️ 换成生活化情境（成绩统计/购物清单/班级事务）重新叙述（围绕「知识A」）</div>
+  
+</div></div>
+<h2>👥 分层辅导名单</h2>
+<table><tr><th>层级</th><th>学生</th><th>得分</th><th>建议</th></tr><tr><td colspan=4>未提供名单</td></tr></table>
+<h2>⚠ 数据提示（5）</h2>
+<ul class="warn"><li>题目 1 得分率 1.50 越界，已修正到 [0,1]</li><li>题目 1 区分度 -0.20 为负，已修正为 0</li><li>题目 2 得分率缺失，按适中 0.65 处理</li><li>题目 3 满分缺失/非法，按 1 分计入</li><li>未提供学生名单：分层辅导仅给出分层标准；传入成绩单 CSV 可生成具体名单</li></ul>
+</div></body></html>

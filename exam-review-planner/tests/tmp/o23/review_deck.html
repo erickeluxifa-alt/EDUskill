@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026年秋 · Python 程序设计期中考试</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#f2f5f9;color:#2a3546;font-size:14px}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}
+h1{font-size:21px;margin:0 0 4px}h2{font-size:16px;margin:22px 0 8px;color:#1f3a57}
+.sub{color:#6b7c8e;margin-bottom:10px}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.st{flex:1 1 120px;background:#fff;border-radius:10px;border:1px solid #e3e9f0;padding:10px 14px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.st b{display:block;font-size:19px;color:#1f3a57}
+.tl-wrap{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.tl{background:#e8eef6;border-radius:20px;padding:5px 12px;font-size:12px;color:#33506e}
+.tl-n{font-weight:600}.tl-m{color:#c0392b;margin-left:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+.card{background:#fff;border-radius:12px;border:1px solid #e3e9f0;border-left:6px solid #7b9e6b;padding:12px}
+.card.q-必讲{border-left-color:#c0392b}.card.q-应讲{border-left-color:#e67e22}.card.q-略讲{border-left-color:#8fa8bf}
+.ch{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:600}
+.qt{color:#7a8ba0;font-weight:400;font-size:13px}
+.tag{margin-left:auto;background:#eef2f6;border-radius:12px;padding:2px 10px;font-size:12px;color:#43536b}
+.bar{height:8px;background:#edf1f5;border-radius:4px;margin:9px 0 7px;overflow:hidden}
+.bar i{display:block;height:100%;background:#2d7fb8;border-radius:4px}
+.meta{color:#7a8ba0;font-size:12px}.kp{font-weight:600;margin:6px 0 2px}
+.txt{color:#55677d;font-size:13px;margin:4px 0}
+.how,.va,.mm{font-size:13px;margin:5px 0;line-height:1.55}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;margin:12px 0}
+th,td{border-bottom:1px solid #edf1f5;padding:8px 10px;text-align:left}th{background:#eef3f8}
+.warn{background:#fdf0ee;border:1px solid #f3cfc8;border-radius:8px;padding:10px 14px;margin-top:14px}
+@media(max-width:640px){h1{font-size:18px}.grid{grid-template-columns:1fr}.st{flex:1 1 40%}}
+@media print{body{background:#fff}.card{break-inside:avoid}}
+</style></head>
+<body><div class="wrap">
+<h1>2026年秋 · Python 程序设计期中考试</h1>
+<div class="sub">Python 程序设计基础 · 计科2401班 · 2026-08-26 · 本节 5 分钟</div>
+<div class="stats">
+<div class="st"><b>8</b>总题数</div>
+<div class="st"><b>3</b>必讲题</div>
+<div class="st"><b>4</b>应讲题</div>
+<div class="st"><b>1</b>略讲题</div>
+<div class="st"><b>0′</b>精讲时长</div>
+</div>
+<h2>⏱ 时间轴</h2>
+<div class="tl-wrap"><div class="tl"><span class="tl-n">开场反馈</span><span class="tl-m">3′</span></div><div class="tl"><span class="tl-n">核心讲评</span><span class="tl-m">0′</span></div><div class="tl"><span class="tl-n">收尾与作业</span><span class="tl-m">2′</span></div></div>
+<h2>📒 讲评题卡</h2>
+<div class="grid"><div class="card q-必讲">
+  <div class="ch"><b>题7</b><span class="qt">综合 · 16分</span>
+  <span class="tag">必讲</span></div>
+  <div class="bar"><i style="width:40%"></i></div>
+  <div class="meta">得分率 40.0% · 区分度 0.37</div>
+  <div class="kp">知识点：综合应用</div>
+  <div class="txt">成绩统计系统综合题</div>
+  <div class="how">📌 重点讲思路与典型错误，展示错例，追问易错点</div>
+  <div class="va">✏️ 将题干数值替换（非整数/带单位/加大数据量），重算并核对结果（围绕「综合应用」）</div>
+  <div class="mm">⏱ 精讲 0 分钟</div>
+</div><div class="card q-必讲">
+  <div class="ch"><b>题6</b><span class="qt">编程 · 15分</span>
+  <span class="tag">必讲</span></div>
+  <div class="bar"><i style="width:46%"></i></div>
+  <div class="meta">得分率 46.0% · 区分度 0.33</div>
+  <div class="kp">知识点：文件处理</div>
+  <div class="txt">文件读写与异常处理</div>
+  <div class="how">📌 重点讲思路与典型错误，展示错例，追问易错点</div>
+  <div class="va">✏️ 把条件与结论互换，改编成逆向题让学生反推（围绕「文件处理」）</div>
+  <div class="mm">⏱ 精讲 0 分钟</div>
+</div><div class="card q-应讲">
+  <div class="ch"><b>题5</b><span class="qt">编程 · 15分</span>
+  <span class="tag">应讲</span></div>
+  <div class="bar"><i style="width:54%"></i></div>
+  <div class="meta">得分率 54.0% · 区分度 0.31</div>
+  <div class="kp">知识点：函数与模块</div>
+  <div class="txt">函数参数传参与返回值</div>
+  <div class="how">📌 先点易错点，再由学生自查订正</div>
+  <div class="va">✏️ 换成生活化情境（成绩统计/购物清单/班级事务）重新叙述（围绕「函数与模块」）</div>
+  <div class="mm">⏱ 精讲 0 分钟</div>
+</div><div class="card q-必讲">
+  <div class="ch"><b>题8</b><span class="qt">综合 · 20分</span>
+  <span class="tag">必讲</span></div>
+  <div class="bar"><i style="width:42%"></i></div>
+  <div class="meta">得分率 42.0% · 区分度 0.12</div>
+  <div class="kp">知识点：综合应用</div>
+  <div class="txt">数据分析与可视化综合</div>
+  <div class="how">📌 全班统一讲概念：核对题意与概念，排除题干歧义后再评</div>
+  <div class="va">✏️ 把单一对象改为批量对象（列表/多组数据），强化遍历与重复（围绕「综合应用」）</div>
+  <div class="mm">⏱ 精讲 0 分钟</div>
+</div><div class="card q-应讲">
+  <div class="ch"><b>题4</b><span class="qt">填空 · 10分</span>
+  <span class="tag">应讲</span></div>
+  <div class="bar"><i style="width:67%"></i></div>
+  <div class="meta">得分率 67.0% · 区分度 0.27</div>
+  <div class="kp">知识点：流程控制</div>
+  <div class="txt">分支嵌套与缩进</div>
+  <div class="how">📌 先点易错点，再由学生自查订正</div>
+  <div class="va">✏️ 给出一段错误代码/错误答案，让学生担任评委找出并修复（围绕「流程控制」）</div>
+  <div class="mm">⏱ 精讲 0 分钟</div>
+</div><div class="card q-应讲">
+  <div class="ch"><b>题3</b><span class="qt">单选 · 10分</span>
+  <span class="tag">应讲</span></div>
+  <div class="bar"><i style="width:78%"></i></div>
+  <div class="meta">得分率 78.0% · 区分度 0.19</div>
+  <div class="kp">知识点：流程控制</div>
+  <div class="txt">循环边界条件</div>
+  <div class="how">📌 先点易错点，再由学生自查订正</div>
+  <div class="va">✏️ 把一步题拆成两步，先求中间量再求最终结果（围绕「流程控制」）</div>
+  <div class="mm">⏱ 精讲 0 分钟</div>
+</div><div class="card q-应讲">
+  <div class="ch"><b>题1</b><span class="qt">单选 · 8分</span>
+  <span class="tag">应讲</span></div>
+  <div class="bar"><i style="width:83%"></i></div>
+  <div class="meta">得分率 83.0% · 区分度 0.25</div>
+  <div class="kp">知识点：基础语法</div>
+  <div class="txt">变量命名与类型转换</div>
+  <div class="how">📌 先点易错点，再由学生自查订正</div>
+  <div class="va">✏️ 将题干数值替换（非整数/带单位/加大数据量），重算并核对结果（围绕「基础语法」）</div>
+  <div class="mm">⏱ 精讲 0 分钟</div>
+</div><div class="card q-略讲">
+  <div class="ch"><b>题2</b><span class="qt">单选 · 8分</span>
+  <span class="tag">略讲</span></div>
+  <div class="bar"><i style="width:90%"></i></div>
+  <div class="meta">得分率 90.0% · 区分度 0.25</div>
+  <div class="kp">知识点：基础语法</div>
+  <div class="txt">运算符优先级</div>
+  <div class="how">📌 小组互查订正，仅口头点关键易错</div>
+  <div class="va">✏️ 把条件与结论互换，改编成逆向题让学生反推（围绕「基础语法」）</div>
+  
+</div></div>
+<h2>👥 分层辅导名单</h2>
+<table><tr><th>层级</th><th>学生</th><th>得分</th><th>建议</th></tr><tr><td>B</td><td>周涛</td><td>82.0</td><td>错题订正 + 课上变式题全做，错题进错题本</td></tr><tr><td>B</td><td>徐鹏</td><td>80.0</td><td>错题订正 + 课上变式题全做，错题进错题本</td></tr><tr><td>B</td><td>王佳琪</td><td>78.0</td><td>错题订正 + 课上变式题全做，错题进错题本</td></tr><tr><td>B</td><td>陈宇轩</td><td>74.0</td><td>错题订正 + 课上变式题全做，错题进错题本</td></tr><tr><td>B</td><td>李思远</td><td>70.0</td><td>错题订正 + 课上变式题全做，错题进错题本</td></tr><tr><td>B</td><td>张梦洁</td><td>68.0</td><td>错题订正 + 课上变式题全做，错题进错题本</td></tr><tr><td>B</td><td>刘子墨</td><td>65.0</td><td>错题订正 + 课上变式题全做，错题进错题本</td></tr><tr><td>B</td><td>杨帆</td><td>60.0</td><td>错题订正 + 课上变式题全做，错题进错题本</td></tr><tr><td>C</td><td>黄诗涵</td><td>58.0</td><td>结对帮扶 + 精讲题重做，优先掌握必讲知识点，完成后过一小测；优先任务：综合应用、文件处理</td></tr><tr><td>C</td><td>孙浩然</td><td>55.0</td><td>结对帮扶 + 精讲题重做，优先掌握必讲知识点，完成后过一小测；优先任务：综合应用、文件处理</td></tr><tr><td>C</td><td>吴欣怡</td><td>50.0</td><td>结对帮扶 + 精讲题重做，优先掌握必讲知识点，完成后过一小测；优先任务：综合应用、文件处理</td></tr><tr><td>C</td><td>郑雨桐</td><td>48.0</td><td>结对帮扶 + 精讲题重做，优先掌握必讲知识点，完成后过一小测；优先任务：综合应用、文件处理</td></tr><tr><td>C</td><td>赵晨曦</td><td>45.0</td><td>结对帮扶 + 精讲题重做，优先掌握必讲知识点，完成后过一小测；优先任务：综合应用、文件处理</td></tr><tr><td>C</td><td>林志远</td><td>42.0</td><td>结对帮扶 + 精讲题重做，优先掌握必讲知识点，完成后过一小测；优先任务：综合应用、文件处理</td></tr><tr><td>C</td><td>高艺凡</td><td>38.0</td><td>结对帮扶 + 精讲题重做，优先掌握必讲知识点，完成后过一小测；优先任务：综合应用、文件处理</td></tr><tr><td>C</td><td>罗天佑</td><td>34.0</td><td>结对帮扶 + 精讲题重做，优先掌握必讲知识点，完成后过一小测；优先任务：综合应用、文件处理</td></tr></table>
+<h2>⚠ 数据提示（0）</h2>
+<ul class="warn"><li>无</li></ul>
+</div></body></html>

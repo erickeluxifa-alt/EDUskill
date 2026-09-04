@@ -1,0 +1,11 @@
+{
+  "students": [
+    {"name": "甲", "options": ["A单位"]},
+    {"name": "乙", "options": ["A单位"]}
+  ],
+  "units": [
+    {"name": "A单位", "capacity": 1},
+    {"name": "B单位", "capacity": 1}
+  ],
+  "rules": {"fallback_any": true}
+}

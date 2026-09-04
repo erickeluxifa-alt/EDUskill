@@ -1,0 +1,33 @@
+{
+ "resources": [
+  {
+   "id": "A",
+   "capacity": 60
+  },
+  {
+   "id": "B",
+   "capacity": 40
+  }
+ ],
+ "rules": {
+  "max_per_resource_slot": 3
+ },
+ "requests": [
+  {
+   "id": "p0",
+   "course": "低优先课",
+   "students": 20,
+   "date": "2026-09-09",
+   "slot": "08:00-10:00",
+   "priority": 0
+  },
+  {
+   "id": "p1",
+   "course": "高优先课",
+   "students": 40,
+   "date": "2026-09-09",
+   "slot": "08:00-10:00",
+   "priority": 3
+  }
+ ]
+}

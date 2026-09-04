@@ -1,0 +1,1 @@
+{"students": [{"student_id":"T007","name":"自定义阈值测试","gpa":2.8,"fail_courses":1,"required_credits":160,"completed_credits":100,"failed_credits":10}],"config_overrides":{"gpa_warn_threshold":3.0,"fail_course_penalty_per":30}}

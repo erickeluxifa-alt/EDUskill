@@ -1,0 +1,350 @@
+{
+ "meta": {
+  "exam": "Python 程序设计 期中考试（模拟）",
+  "course": "Python 程序设计基础",
+  "date": "2026-08-26",
+  "total_marks": 100,
+  "class_name": "计科2401",
+  "className": "计科2401",
+  "pass_rate": 0.6,
+  "excellent_rate": 0.85,
+  "low_rate": 0.3,
+  "group_fraction": 0.27,
+  "questions": [
+   {
+    "id": "1",
+    "marks": 8,
+    "kp": "基础语法",
+    "type": "单选",
+    "difficulty": "易",
+    "n": 24,
+    "mean": 7.44,
+    "p": 0.93,
+    "full_rate": 0.55,
+    "d": 0.25
+   },
+   {
+    "id": "2",
+    "marks": 8,
+    "kp": "基础语法",
+    "type": "单选",
+    "difficulty": "易",
+    "n": 24,
+    "mean": 7.6,
+    "p": 0.95,
+    "full_rate": 0.55,
+    "d": 0.18
+   },
+   {
+    "id": "3",
+    "marks": 10,
+    "kp": "流程控制",
+    "type": "单选",
+    "difficulty": "中",
+    "n": 24,
+    "mean": 7.5,
+    "p": 0.75,
+    "full_rate": 0.28,
+    "d": 0.32
+   },
+   {
+    "id": "4",
+    "marks": 10,
+    "kp": "流程控制",
+    "type": "填空",
+    "difficulty": "中",
+    "n": 24,
+    "mean": 7.2,
+    "p": 0.72,
+    "full_rate": 0.28,
+    "d": 0.3
+   },
+   {
+    "id": "5",
+    "marks": 15,
+    "kp": "函数与模块",
+    "type": "简答",
+    "difficulty": "中",
+    "n": 24,
+    "mean": 8.25,
+    "p": 0.55,
+    "full_rate": 0.28,
+    "d": 0.42
+   },
+   {
+    "id": "6",
+    "marks": 15,
+    "kp": "文件处理",
+    "type": "简答",
+    "difficulty": "难",
+    "n": 24,
+    "mean": 7.5,
+    "p": 0.5,
+    "full_rate": 0.12,
+    "d": 0.38
+   },
+   {
+    "id": "7",
+    "marks": 17,
+    "kp": "综合应用",
+    "type": "综合",
+    "difficulty": "难",
+    "n": 24,
+    "mean": 10.03,
+    "p": 0.59,
+    "full_rate": 0.12,
+    "d": 0.15
+   },
+   {
+    "id": "8",
+    "marks": 17,
+    "kp": "综合应用",
+    "type": "综合",
+    "difficulty": "难",
+    "n": 24,
+    "mean": 9.69,
+    "p": 0.57,
+    "full_rate": 0.12,
+    "d": 0.12
+   }
+  ],
+  "kps": [
+   "基础语法",
+   "流程控制",
+   "函数与模块",
+   "文件处理",
+   "综合应用"
+  ],
+  "sum_marks": 100.0,
+  "version": "1.0.0"
+ },
+ "n_total": 24,
+ "n_present": 24,
+ "n_absent": 0,
+ "absent_list": [],
+ "totals": {
+  "mean": 68.8,
+  "sd": 12.6,
+  "median": 70.0,
+  "mode": 72.0,
+  "max": 96.0,
+  "min": 34.0,
+  "n_pass": 17,
+  "n_excl": 0,
+  "n_low": 0,
+  "pass_rate": 0.64,
+  "excel_rate": 0.21,
+  "low_rate": 0.04,
+  "p_overall": 0.71,
+  "n_present": 24,
+  "alpha": 0.81,
+  "dist": [
+   {
+    "label": "0~10",
+    "count": 0,
+    "ratio": 0.0
+   },
+   {
+    "label": "10~20",
+    "count": 0,
+    "ratio": 0.0
+   },
+   {
+    "label": "20~30",
+    "count": 0,
+    "ratio": 0.0
+   },
+   {
+    "label": "30~40",
+    "count": 1,
+    "ratio": 0.042
+   },
+   {
+    "label": "40~50",
+    "count": 3,
+    "ratio": 0.125
+   },
+   {
+    "label": "50~60",
+    "count": 5,
+    "ratio": 0.208
+   },
+   {
+    "label": "60~70",
+    "count": 6,
+    "ratio": 0.25
+   },
+   {
+    "label": "70~80",
+    "count": 5,
+    "ratio": 0.208
+   },
+   {
+    "label": "80~90",
+    "count": 3,
+    "ratio": 0.125
+   },
+   {
+    "label": "90~100",
+    "count": 1,
+    "ratio": 0.042
+   }
+  ]
+ },
+ "students": [
+  {
+   "name": "王雅静",
+   "sid": "201101",
+   "class": "计科2401",
+   "total": 96,
+   "pct": 100,
+   "tier": ""
+  },
+  {
+   "name": "李梓睿",
+   "sid": "201102",
+   "class": "计科2401",
+   "total": 91,
+   "pct": 95,
+   "tier": ""
+  },
+  {
+   "name": "张明宇",
+   "sid": "201103",
+   "class": "计科2401",
+   "total": 86,
+   "pct": 90,
+   "tier": ""
+  },
+  {
+   "name": "陈思彤",
+   "sid": "201104",
+   "class": "计科2401",
+   "total": 82,
+   "pct": 84,
+   "tier": ""
+  },
+  {
+   "name": "赵天乐",
+   "sid": "201105",
+   "class": "计科2401",
+   "total": 78,
+   "pct": 76,
+   "tier": ""
+  },
+  {
+   "name": "刘俊豪",
+   "sid": "201106",
+   "class": "计科2401",
+   "total": 75,
+   "pct": 68,
+   "tier": ""
+  },
+  {
+   "name": "孙雨欣",
+   "sid": "201107",
+   "class": "计科2401",
+   "total": 72,
+   "pct": 62,
+   "tier": ""
+  },
+  {
+   "name": "周浩宇",
+   "sid": "201108",
+   "class": "计科2401",
+   "total": 69,
+   "pct": 57,
+   "tier": ""
+  },
+  {
+   "name": "吴梓萌",
+   "sid": "201109",
+   "class": "计科2401",
+   "total": 67,
+   "pct": 52,
+   "tier": ""
+  },
+  {
+   "name": "郑一鸣",
+   "sid": "201110",
+   "class": "计科2401",
+   "total": 65,
+   "pct": 45,
+   "tier": ""
+  },
+  {
+   "name": "冯嘉豪",
+   "sid": "201111",
+   "class": "计科2401",
+   "total": 63,
+   "pct": 38,
+   "tier": ""
+  },
+  {
+   "name": "蒋晓桐",
+   "sid": "201112",
+   "class": "计科2401",
+   "total": 61,
+   "pct": 32,
+   "tier": ""
+  },
+  {
+   "name": "孙亦可",
+   "sid": "201113",
+   "class": "计科2401",
+   "total": 59,
+   "pct": 26,
+   "tier": "尾部"
+  },
+  {
+   "name": "吴振宇",
+   "sid": "201114",
+   "class": "计科2401",
+   "total": 55,
+   "pct": 19,
+   "tier": "尾部"
+  },
+  {
+   "name": "朱雨晨",
+   "sid": "201115",
+   "class": "计科2401",
+   "total": 51,
+   "pct": 12,
+   "tier": "预警"
+  },
+  {
+   "name": "沈皓轩",
+   "sid": "201116",
+   "class": "计科2401",
+   "total": 48,
+   "pct": 6,
+   "tier": "预警"
+  },
+  {
+   "name": "韩佳怡",
+   "sid": "201117",
+   "class": "计科2401",
+   "total": 42,
+   "pct": 3,
+   "tier": "高危"
+  },
+  {
+   "name": "顾一凡",
+   "sid": "201118",
+   "class": "计科2401",
+   "total": 37,
+   "pct": 1,
+   "tier": "高危"
+  },
+  {
+   "name": "钱文博",
+   "sid": "201119",
+   "class": "计科2401",
+   "total": 34,
+   "pct": 0,
+   "tier": "高危"
+  }
+ ],
+ "alpha": 0.81,
+ "warns": []
+}

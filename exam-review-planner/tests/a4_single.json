@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "exam": "初二数学月考",
+    "course": "数学",
+    "class_name": "初二(3)班",
+    "date": "2026-08-25",
+    "total_marks": 100,
+    "pass_rate": 0.6,
+    "excellent_rate": 0.85,
+    "low_rate": 0.3,
+    "version": "1.0.0"
+  },
+  "questions": [
+    {
+      "id": "1",
+      "marks": 20,
+      "kp": "单一知识点",
+      "p": 0.45,
+      "d": null
+    }
+  ],
+  "students": [
+    {
+      "sid": "S1",
+      "name": "赵一",
+      "total": 30
+    }
+  ]
+}

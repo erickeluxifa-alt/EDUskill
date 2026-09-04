@@ -1,0 +1,9 @@
+{
+  "course": "教育评价",
+  "topic": "形成性评价与终结性评价",
+  "duration_minutes": 45,
+  "student_count": 32,
+  "objectives": ["解释两类评价的区别", "分析课堂案例并提出改进方案"],
+  "constraints": {"room": "固定座位", "devices": "无", "special_needs": ""},
+  "preferred_mode": "auto"
+}

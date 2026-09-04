@@ -1,0 +1,1 @@
+{"schedule":[{"course":"高数<img src=x onerror=alert('pwned')>","teacher":"XSS老师","room":"R-XSS","class":"C-XSS","weeks":[1],"weekday":"1","periods":[5]},{"course":"线代<script>alert(document.cookie)</script>","teacher":"XSS老师","room":"R-DIFF","class":"C-DIFF","weeks":[1],"weekday":"1","periods":[5]}]}

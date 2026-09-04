@@ -1,0 +1,1 @@
+{"schedule":[{"course":"A","teacher":"张","room":"R","class":"C","week_start":1,"week_end":4,"weekday":"周一","periods":[1]},{"course":"B","teacher":"张","room":"R2","class":"D","week_start":2,"week_end":4,"weekday":"一","periods":[1]}]}

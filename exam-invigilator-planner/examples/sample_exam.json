@@ -1,0 +1,50 @@
+{
+  "exams": [
+    {
+      "course": "高等数学A",
+      "date": "2026-06-29",
+      "slot": "上午",
+      "classes": [
+        {"name": "计算机2401", "count": 42},
+        {"name": "软件2402", "count": 40}
+      ]
+    },
+    {
+      "course": "高等数学A",
+      "date": "2026-06-29",
+      "slot": "下午",
+      "classes": [
+        {"name": "电子2401", "count": 45}
+      ]
+    },
+    {
+      "course": "大学英语B",
+      "date": "2026-06-30",
+      "slot": "上午",
+      "classes": [
+        {"name": "计算机2401", "count": 42},
+        {"name": "电子2401", "count": 45}
+      ]
+    }
+  ],
+  "rooms": [
+    {"id": "教1-101", "capacity": 90},
+    {"id": "教1-102", "capacity": 60},
+    {"id": "教1-201", "capacity": 45}
+  ],
+  "invigilators": [
+    {"name": "张明", "teach_classes": ["计算机2401"], "max_per_day": 2},
+    {"name": "李静", "teach_classes": ["软件2402"]},
+    {"name": "王强", "teach_classes": ["电子2401"], "max_per_day": 2,
+     "unavailable": [{"date": "2026-06-30", "slot": "上午"}]},
+    {"name": "赵敏", "teach_classes": ["电子2401"], "max_per_day": 2},
+    {"name": "陈晨"}
+  ],
+  "rules": {
+    "avoid_own_class": true,
+    "min_invigilators_per_room": 1,
+    "students_per_invigilator": 50,
+    "max_invigilators_per_room": 3,
+    "default_max_per_day": 2
+  }
+}

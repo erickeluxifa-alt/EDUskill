@@ -1,0 +1,20 @@
+{
+ "resources": [
+  {
+   "id": "A",
+   "capacity": 60
+  }
+ ],
+ "requests": [
+  {
+   "id": "r",
+   "students": 0,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "r2",
+   "students": 10,
+   "date": "2026-09-09"
+  }
+ ]
+}

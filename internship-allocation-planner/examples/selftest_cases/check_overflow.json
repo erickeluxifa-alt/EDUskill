@@ -1,0 +1,9 @@
+{
+  "units": [
+    {"name": "A单位", "capacity": 1}
+  ],
+  "assignments": [
+    {"student": "甲", "unit": "A单位", "window": "w1"},
+    {"student": "乙", "unit": "A单位", "window": "w1"}
+  ]
+}
