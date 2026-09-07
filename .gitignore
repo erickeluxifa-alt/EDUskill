@@ -8,8 +8,8 @@ __pycache__/
 .env
 *_managed.json
 
-# 内部平台技能（非本人开发，不公开）
-ku-doc-manage/
-famou-workflow-router/
-domain-analysis-execution/
-skill-recommender/
+# 自测运行时产生的中间产物（非交付内容）
+tests/tmp/
+**/tests/tmp/
+
+# 第三方 / 非本人开发的技能目录在本地 .git/info/exclude 中排除

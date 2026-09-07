@@ -1,0 +1,65 @@
+{
+  "exam": "2026年秋季学期 Python 程序设计期中考试（模拟）",
+  "course": "Python 程序设计基础",
+  "date": "2026-08-26",
+  "total_marks": 100,
+  "className": "计科2401班",
+  "questions": [
+    {
+      "id": "1",
+      "marks": 8,
+      "kp": "基础语法",
+      "type": "单选",
+      "difficulty": "易"
+    },
+    {
+      "id": "2",
+      "marks": 8,
+      "kp": "基础语法",
+      "type": "单选",
+      "difficulty": "易"
+    },
+    {
+      "id": "3",
+      "marks": 10,
+      "kp": "流程控制",
+      "type": "单选",
+      "difficulty": "中"
+    },
+    {
+      "id": "4",
+      "marks": 10,
+      "kp": "流程控制",
+      "type": "填空",
+      "difficulty": "中"
+    },
+    {
+      "id": "5",
+      "marks": 15,
+      "kp": "函数与模块",
+      "type": "简答",
+      "difficulty": "中"
+    },
+    {
+      "id": "6",
+      "marks": 15,
+      "kp": "文件处理",
+      "type": "简答",
+      "difficulty": "难"
+    },
+    {
+      "id": "7",
+      "marks": 17,
+      "kp": "综合应用",
+      "type": "综合",
+      "difficulty": "难"
+    },
+    {
+      "id": "8",
+      "marks": 17,
+      "kp": "综合应用",
+      "type": "综合",
+      "difficulty": "难"
+    }
+  ]
+}

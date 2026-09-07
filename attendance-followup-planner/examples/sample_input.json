@@ -1,0 +1,16 @@
+{
+  "course": "高等数学",
+  "class_name": "高一1班",
+  "rules": {
+    "absence_threshold": 2,
+    "consecutive_threshold": 2,
+    "late_weight": 0.5
+  },
+  "records": [
+    {"student_id": "S001", "student_name": "示例甲", "date": "2026-09-01", "status": "absent", "reason": ""},
+    {"student_id": "S001", "student_name": "示例甲", "date": "2026-09-02", "status": "absent", "reason": ""},
+    {"student_id": "S002", "student_name": "示例乙", "date": "2026-09-01", "status": "late", "reason": ""},
+    {"student_id": "S002", "student_name": "示例乙", "date": "2026-09-03", "status": "late", "reason": ""},
+    {"student_id": "S003", "student_name": "示例丙", "date": "2026-09-01", "status": "present", "reason": ""}
+  ]
+}

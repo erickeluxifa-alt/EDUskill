@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>试卷预览组件</title>
+<style>
+  :root{
+    --ink:#1f2937; --paper:#ffffff; --accent:#2563eb; --line:#d1d5db;
+    --muted:#6b7280; --tag:#eff6ff; --warn:#b45309;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#f3f4f6; color:var(--ink);}
+  .topbar{position:sticky; top:0; z-index:10; display:flex; flex-wrap:wrap; gap:8px 12px;
+    align-items:center; padding:10px 16px; background:#fff; border-bottom:1px solid var(--line);}
+  .topbar h1{font-size:16px; margin-right:auto;}
+  .topbar button, .topbar label.btn{font-size:13px; padding:6px 12px; border:1px solid var(--line);
+    border-radius:6px; background:#fff; cursor:pointer; color:var(--ink);}
+  .topbar button:hover{border-color:var(--accent); color:var(--accent);}
+  .topbar input[type=file]{display:none;}
+  #toggleAns.on{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .wrap{max-width:860px; margin:20px auto 60px; padding:0 12px;}
+  .paper{background:var(--paper); padding:40px 48px 48px; border:1px solid var(--line); border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,.06);}
+  .paper h2{font-size:22px; text-align:center; margin-bottom:6px;}
+  .paper .sub{text-align:center; color:var(--muted); font-size:13px; margin-bottom:18px;}
+  .fillbar{display:flex; gap:24px; flex-wrap:wrap; font-size:13px; color:var(--muted);
+    border-bottom:1px dashed var(--line); padding-bottom:12px; margin-bottom:18px;}
+  .section{margin-top:22px;}
+  .section h3{font-size:16px; font-weight:600; border-left:4px solid var(--accent);
+    padding-left:10px; margin-bottom:12px;}
+  .q{margin-bottom:14px; padding:10px 12px; border:1px solid transparent; border-radius:6px;}
+  .q:hover{background:#fafafa;}
+  .q .stem{font-size:14px; line-height:1.7;}
+  .q .meta{color:var(--muted); font-size:12px; margin-left:8px;}
+  .opts{margin-top:8px; margin-left:6px; font-size:14px; line-height:1.8;}
+  .opts div{padding:2px 0;}
+  .ans{display:none; margin-top:8px; padding:6px 10px; background:var(--tag); border-radius:6px;
+    font-size:13px; color:#1e3a8a;}
+  .ans.show{display:block;}
+  .report{margin-top:28px; padding:14px; background:#f8fafc; border:1px dashed var(--line);
+    border-radius:6px; font-size:13px; color:var(--muted); line-height:1.8;}
+  .report b{color:var(--ink);}
+  .rep-gap{color:var(--warn);}
+  .no-json{padding:48px 8px; text-align:center; color:var(--muted);}
+  .drop{padding:60px 8px; text-align:center; border:2px dashed var(--line); border-radius:8px; color:var(--muted);}
+  /* 移动端适配 */
+  @media (max-width:640px){
+    .wrap{margin-top:12px;}
+    .paper{padding:16px 14px 24px; border:0; box-shadow:none; }
+    .q .stem, .opts{font-size:15px;}
+    .topbar{font-size:12px;}
+  }
+  /* 打印 */
+  @media print{
+    body{background:#fff;}
+    .topbar{display:none;}
+    .wrap{max-width:100%; margin:0; padding:0;}
+    .paper{border:none; box-shadow:none; padding:0;}
+    .q:hover{border:none;}
+    .report{display:block; page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <h1>试卷预览</h1>
+  <label for="file">选择 JSON</label>
+  <input type="file" id="file" accept=".json,application/json">
+  <button id="sample">加载示例</button>
+  <button id="toggle">显示答案</button>
+  <button id="copy">复制 JSON 到剪贴板</button>
+  <button onclick="window.print()">打印 / 存为 PDF</button>
+</div>
+<div class="wrap" id="wrap"></div>
+
+<script>
+(function(){
+  "use strict";
+  // 示例数据：与 examples/ 输出结构一致（{"paper":..., "report":...}）
+  var SAMPLE = {
+  "paper": {
+    "title": "2026年秋季学期期中考试（模拟）",
+    "course": "Python程序设计",
+    "total_marks_nominal": 100.0,
+    "marks_picked": 100.0,
+    "seed": 2026,
+    "sections": [
+      {
+        "type": "单项选择题",
+        "count_target": 12,
+        "marks": 2.0,
+        "marks_picked": 24.0,
+        "questions": [
+          {
+            "id": "Q0001",
+            "type": "单项选择题",
+            "kp": "基础语法",
+            "difficulty": "易",
+            "marks": 2.0,
+            "stem": "【单选题】关于「基础语法」的表述，下列说法正确的是？（样1）",
+            "options": [
+              "A. 表述甲成立",
+              "B. 表述乙成立",
+              "C. 表述丙成立",
+              "D. 表述丁成立"
+            ],
+            "answer": "B",
+            "explanation": "该题考察「基础语法」，参考答案依据课程讲义第 1 节。（模拟数据）"
+          },
+          {
+            "id": "Q0002",
+            "type": "单项选择题",
+            "kp": "基础语法",
+            "difficulty": "易",
+            "marks": 2.0,
+            "stem": "【单选题】关于「基础语法」的表述，下列说法正确的是？（样2）",
+            "options": [
+              "A. 表述甲成立",
+              "B. 表述乙成立",
+              "C. 表述丙成立",
+              "D. 表述丁成立"
+            ],
+            "answer": "B",
+            "explanation": "该题考察「基础语法」，参考答案依据课程讲义第 2 节。（模拟数据）"
+          },
+          {
+            "id": "Q0031",
+            "type": "单项选择题",
+            "kp": "函数与模块",
+            "difficulty": "易",
+            "marks": 2.0,
+            "stem": "【单选题】关于「函数与模块」的表述，下列说法正确的是？（样1）",
+            "options": [
+              "A. 表述甲成立",
+              "B. 表述乙成立",
+              "C. 表述丙成立",
+              "D. 表述丁成立"
+            ],
+            "answer": "B",
+            "explanation": "该题考察「函数与模块」，参考答案依据课程讲义第 1 节。（模拟数据）"
+          },
+          {
+            "id": "Q0032",
+            "type": "单项选择题",
+            "kp": "函数与模块",
+            "difficulty": "易",
+            "marks": 2.0,
+            "stem": "【单选题】关于「函数与模块」的表述，下列说法正确的是？（样2）",
+            "options": [
+              "A. 表述甲成立",
+              "B. 表述乙成立",
+              "C. 表述丙成立",
+              "D. 表述丁成立"
+            ],
+            "answer": "B",
+            "explanation": "该题考察「函数与模块」，参考答案依据课程讲义第 2 节。（模拟数据）"
+          },
+          {
+            "id": "Q0034",
+            "type": "单项选择题",
+            "kp": "函数与模块",
+            "difficulty": "中",
+            "marks": 2.0,
+            "stem": "【单选题】关于「函数与模块」的表述，下列说法正确的是？（样4）",
+            "options": [
+              "A. 表述甲成立",
+              "B. 表述乙成立",
+              "C. 表述丙成立",
+              "D. 表述丁成立"
+            ],
+            "answer": "B",
+            "explanation": "该题考察「函数与模块」，参考答案依据课程讲义第 4 节。（模拟数据）"
+          },
+          {
+            "id": "Q0062",
+            "type": "单项选择题",
+            "kp": "数据结构",
+            "difficulty": "易",
+            "marks": 2.0,
+            "stem": "【单选题】关于「数据结构」的表述，下列说法正确的是？（样2）",
+            "options": [
+              "A. 表述甲成立",
+              "B. 表述乙成立",
+              "C. 表述丙成立",
+              "D. 表述丁成立"
+            ],
+            "answer": "B",
+            "explanation": "该题考察「数据结构」，参考答案依据课程讲义第 2 节。（模拟数据）"
+          }
+        ]
+      },
+      {
+        "type": "多项选择题",
+        "count_target": 6,
+        "marks": 2.0,
+        "marks_picked": 12.0,
+        "questions": [
+          {
+            "id": "Q0007",
+            "type": "多项选择题",
+            "kp": "基础语法",
+            "difficulty": "易",
+            "marks": 2.0,
+            "stem": "【多选题】下列属于「基础语法」相关要点的是？（多选，样1）",
+            "options": [
+              "A. 要点甲",
+              "B. 要点乙",
+              "C. 要点丙",
+              "D. 要点丁"
+            ],
+            "answer": "A、C",
+            "explanation": "该题考察「基础语法」，参考答案依据课程讲义第 1 节。（模拟数据）"
+          },
+          {
+            "id": "Q0038",
+            "type": "多项选择题",
+            "kp": "函数与模块",
+            "difficulty": "易",
+            "marks": 2.0,
+            "stem": "【多选题】下列属于「函数与模块」相关要点的是？（多选，样2）",
+            "options": [
+              "A. 要点甲",
+              "B. 要点乙",
+              "C. 要点丙",
+              "D. 要点丁"
+            ],
+            "answer": "A、C",
+            "explanation": "该题考察「函数与模块」，参考答案依据课程讲义第 2 节。（模拟数据）"
+          },
+          {
+            "id": "Q0067",
+            "type": "多项选择题",
+            "kp": "数据结构",
+            "difficulty": "易",
+            "marks": 2.0,
+            "stem": "【多选题】下列属于「数据结构」相关要点的是？（多选，样1）",
+            "options": [
+              "A. 要点甲",
+              "B. 要点乙",
+              "C. 要点丙",
+              "D. 要点丁"
+            ],
+            "answer": "A、C",
+            "explanation": "该题考察「数据结构」，参考答案依据课程讲义第 1 节。（模拟数据）"
+          },
+          {
+            "id": "Q0068",
+            "type": "多项选择题",
+            "kp": "数据结构",
+            "difficulty": "易",
+            "marks": 2.0,
+            "stem": "【多选题】下列属于「数据结构」相关要点的是？（多选，样2）",
+            "options": [
+              "A. 要点甲",
+              "B. 要点乙",
+              "C. 要点丙",
+              "D. 要点丁"
+            ],
+            "answer": "A、C",
+            "explanation": "该题考察「数据结构」，参考答案依据课程讲义第 2 节。（模拟数据）"
+          },
+          {
+            "id": "Q0098",
+            "type": "多项选择题",
+            "kp": "面向对象",
+            "difficulty": "易",
+            "marks": 2.0,
+            "stem": "【多选题】下列属于「面向对象」相关要点的是？（多选，样2）",
+            "options": [
+              "A. 要点甲",
+              "B. 要点乙",
+              "C. 要点丙",
+              "D. 要点丁"
+            ],
+            "answer": "A、C",
+            "explanation": "该题考察「面向对象」，参考答案依据课程讲义第 2 节。（模拟数据）"
+          },
+          {
+            "id": "Q0127",
+            "type": "多项选择题",
+            "kp": "异常与文件",
+            "difficulty": "易",
+            "marks": 2.0,
+            "stem": "【多选题】下列属于「异常与文件」相关要点的是？（多选，样1）",
+            "options": [
+              "A. 要点甲",
+              "B. 要点乙",
+              "C. 要点丙",
+              "D. 要点丁"
+            ],
+            "answer": "A、C",
+            "explanation": "该题考察「异常与文件」，参考答案依据课程讲义第 1 节。（模拟数据）"
+          }
+        ]
+      },
+      {
+        "type": "填空题",
+        "count_target": 12,
+        "marks": 2.0,
+        "marks_picked": 24.0,
+        "questions": [
+          {
+            "id": "Q0016",
+            "type": "填空题",
+            "kp": "基础语法",
+            "difficulty": "中",
+            "marks": 2.0,
+            "stem": "【填空题】在 Python「基础语法」部分中，____构造用于完成核心操作。（样4）",
+            "options": null,
+            "answer": "（圆括号调用）",
+            "explanation": "该题考察「基础语法」，参考答案依据课程讲义第 4 节。（模拟数据）"
+          },
+          {
+            "id": "Q0015",
+            "type": "填空题",
+            "kp": "基础语法",
+            "difficulty": "中",
+            "marks": 2.0,
+            "stem": "【填空题】在 Python「基础语法」部分中，____构造用于完成核心操作。（样3）",
+            "options": null,
+            "answer": "（圆括号调用）",
+            "explanation": "该题考察「基础语法」，参考答案依据课程讲义第 3 节。（模拟数据）"
+          },
+          {
+            "id": "Q0046",
+            "type": "填空题",
+            "kp": "函数与模块",
+            "difficulty": "中",
+            "marks": 2.0,
+            "stem": "【填空题】在 Python「函数与模块」部分中，____构造用于完成核心操作。（样4）",
+            "options": null,
+            "answer": "（圆括号调用）",
+            "explanation": "该题考察「函数与模块」，参考答案依据课程讲义第 4 节。（模拟数据）"
+          },
+          {
+            "id": "Q0045",
+            "type": "填空题",
+            "kp": "函数与模块",
+            "difficulty": "中",
+            "marks": 2.0,
+            "stem": "【填空题】在 Python「函数与模块」部分中，____构造用于完成核心操作。（样3）",
+            "options": null,
+            "answer": "（圆括号调用）",
+            "explanation": "该题考察「函数与模块」，参考答案依据课程讲义第 3 节。（模拟数据）"
+          },
+          {
+            "id": "Q0048",
+            "type": "填空题",
+            "kp": "函数与模块",
+            "difficulty": "难",
+            "marks": 2.0,
+            "stem": "【填空题】在 Python「函数与模块」部分中，____构造用于完成核心操作。（样6）",
+            "options": null,
+            "answer": "（圆括号调用）",
+            "explanation": "该题考察「函数与模块」，参考答案依据课程讲义第 6 节。（模拟数据）"
+          },
+          {
+            "id": "Q0075",
+            "type": "填空题",
+            "kp": "数据结构",
+            "difficulty": "中",
+            "marks": 2.0,
+            "stem": "【填空题】在 Python「数据结构」部分中，____构造用于完成核心操作。（样3）",
+            "options": null,
+            "answer": "（圆括号调用）",
+            "explanation": "该题考察「数据结构」，参考答案依据课程讲义第 3 节。（模拟数据）"
+          }
+        ]
+      },
+      {
+        "type": "简答题",
+        "count_target": 4,
+        "marks": 5.0,
+        "marks_picked": 20.0,
+        "questions": [
+          {
+            "id": "Q0021",
+            "type": "简答题",
+            "kp": "基础语法",
+            "difficulty": "中",
+            "marks": 5.0,
+            "stem": "【简答题】简述「基础语法」在本课程中的主要作用与应用场景。（样3）",
+            "options": null,
+            "answer": "要点：①概念定义；②典型用法；③边界与注意点。",
+            "explanation": "该题考察「基础语法」，参考答案依据课程讲义第 3 节。（模拟数据）"
+          },
+          {
+            "id": "Q0052",
+            "type": "简答题",
+            "kp": "函数与模块",
+            "difficulty": "中",
+            "marks": 5.0,
+            "stem": "【简答题】简述「函数与模块」在本课程中的主要作用与应用场景。（样4）",
+            "options": null,
+            "answer": "要点：①概念定义；②典型用法；③边界与注意点。",
+            "explanation": "该题考察「函数与模块」，参考答案依据课程讲义第 4 节。（模拟数据）"
+          },
+          {
+            "id": "Q0081",
+            "type": "简答题",
+            "kp": "数据结构",
+            "difficulty": "中",
+            "marks": 5.0,
+            "stem": "【简答题】简述「数据结构」在本课程中的主要作用与应用场景。（样3）",
+            "options": null,
+            "answer": "要点：①概念定义；②典型用法；③边界与注意点。",
+            "explanation": "该题考察「数据结构」，参考答案依据课程讲义第 3 节。（模拟数据）"
+          },
+          {
+            "id": "Q0112",
+            "type": "简答题",
+            "kp": "面向对象",
+            "difficulty": "中",
+            "marks": 5.0,
+            "stem": "【简答题】简述「面向对象」在本课程中的主要作用与应用场景。（样4）",
+            "options": null,
+            "answer": "要点：①概念定义；②典型用法；③边界与注意点。",
+            "explanation": "该题考察「面向对象」，参考答案依据课程讲义第 4 节。（模拟数据）"
+          }
+        ]
+      },
+      {
+        "type": "综合应用题",
+        "count_target": 2,
+        "marks": 10.0,
+        "marks_picked": 20.0,
+        "questions": [
+          {
+            "id": "Q0060",
+            "type": "综合应用题",
+            "kp": "函数与模块",
+            "difficulty": "难",
+            "marks": 10.0,
+            "stem": "【综合应用题】围绕「函数与模块」设计一个可运行的小程序，要求包含输入校验与异常处理，并说明设计思路。（样6）",
+            "options": null,
+            "answer": "要点：需求澄清→算法设计→编码实现→测试用例→复杂度分析。",
+            "explanation": "该题考察「函数与模块」，参考答案依据课程讲义第 6 节。（模拟数据）"
+          },
+          {
+            "id": "Q0090",
+            "type": "综合应用题",
+            "kp": "数据结构",
+            "difficulty": "难",
+            "marks": 10.0,
+            "stem": "【综合应用题】围绕「数据结构」设计一个可运行的小程序，要求包含输入校验与异常处理，并说明设计思路。（样6）",
+            "options": null,
+            "answer": "要点：需求澄清→算法设计→编码实现→测试用例→复杂度分析。",
+            "explanation": "该题考察「数据结构」，参考答案依据课程讲义第 6 节。（模拟数据）"
+          }
+        ]
+      }
+    ]
+  },
+  "report": {
+    "gaps": [],
+    "warnings": [],
+    "marks_ok": true
+  }
+};
+
+  var elWrap = document.getElementById("wrap");
+  var showAnswers = false;
+
+  function node(tag, cls, text){
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text; // 安全：只用 textContent，防 XSS
+    return n;
+  }
+
+  function cn(i){
+    return "一二三四五六七八九十".charAt(i - 1) || (i);
+  }
+
+  function render(data){
+    var paper = data && data.paper;
+    var report = data && data.report;
+    if (!paper || !paper.sections){ showNoJson(); return; }
+    var root = document.createElement("div");
+    var sheet = node("div", "paper");
+
+    sheet.appendChild(node("h2", null, paper.title || paper.exam || "试卷"));
+    var sub = node("div", "sub",
+      (paper.course || "") + "　|　满分 " + paper.total_marks_nominal + " 分　|　种子 " + paper.seed);
+    sheet.appendChild(sub);
+
+    var bar = node("div", "fillbar");
+    bar.appendChild(node("span", null, "姓名：__________　班级：__________　学号：__________"));
+    sheet.appendChild(bar);
+
+    paper.sections.forEach(function(sec, i){
+      var secEl = node("div", "section");
+      var head = node("h3", null, "第" + cn(i + 1) + "部分　" + sec.type +
+        "（每题 " + sec.marks + " 分，共 " + sec.count_target + " 题，小计 " + sec.marks_picked + " 分）");
+      secEl.appendChild(head);
+      sec.questions.forEach(function(q, j){
+        var qEl = node("div", "q");
+        var stem = node("div", "stim");
+        stem.appendChild(document.createTextNode((j + 1) + ". " + q.stem));
+        stem.appendChild(node("span", "meta", "　[" + q.kp + " · " + q.difficulty + " · " + q.marks + "分]"));
+        qEl.appendChild(stem);
+        if (q.options && q.options.length){
+          var opts = node("div", "opts");
+          q.options.forEach(function(o, k){
+            var tag = String.fromCharCode(65 + k);
+            opts.appendChild(node("div", null, tag + ". " + o));
+          });
+          qEl.appendChild(opts);
+        }
+        if (showAnswers && q.answer !== ""){
+          var ans = node("div", "ans show");
+          ans.appendChild(document.createTextNode("【答案】" + q.answer +
+            (q.explanation ? "　【解析】" + q.explanation : "")));
+          qEl.appendChild(ans);
+        }
+        secEl.appendChild(qEl);
+      });
+      sheet.appendChild(secEl);
+    });
+
+    if (report){
+      var rep = node("div", "report");
+      rep.appendChild(node("b", null, "组卷报告："));
+      rep.appendChild(document.createTextNode("实际总分 " + paper.marks_picked + " / 计划 " +
+        paper.total_marks_nominal + "　" + (report.marks_ok ? "✓ 对齐" : "✗ 未对齐")));
+      rep.appendChild(document.createElement("br"));
+      if (report.gaps && report.gaps.length){
+        var g = node("span", "rep-gap", "缺口：");
+        report.gaps.forEach(function(x){
+          g.appendChild(document.createTextNode(x.type + "/" + x.kp + " 需 " + x.goal + " 缺 " + x.got + "；"));
+        });
+        rep.appendChild(g);
+      } else {
+        rep.appendChild(document.createTextNode("✓ 无缺口"));
+      }
+      if (report.warnings && report.warnings.length){
+        rep.appendChild(document.createElement("br"));
+        report.warnings.forEach(function(w){
+          rep.appendChild(node("span", "rep-gap", "⚠ " + w + "; "));
+        });
+      }
+      sheet.appendChild(rep);
+    }
+    root.appendChild(sheet);
+    wrap.innerHTML = "";
+    wrap.appendChild(root);
+  }
+
+  function showNoJson(){
+    wrap.innerHTML = "";
+    var d = node("div", "drop");
+    d.appendChild(node("p", "no-json", "请选择组卷输出的 JSON 文件，或点击「加载示例」查看效果。"));
+    d.appendChild(node("p", "no-json", "JSON 结构：{paper:{title,course,total_marks_nominal,seed,sections:[{type,count_target,marks,questions:[{stem,options,answer,explanation,kp,difficulty}]}]}, report:{...}}"));
+    wrap.appendChild(d);
+  }
+
+  document.getElementById("sample").addEventListener("click", function(){ render(SAMPLE); });
+  document.getElementById("copy").addEventListener("click", function(){
+    var txt = JSON.stringify(SAMPLE, null, 2);
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function(){
+      alert("示例 JSON 已复制到剪贴板");
+    }, function(){ prompt("手动复制：", txt); });
+    else prompt("手动复制：", txt);
+  });
+  document.getElementById("file").addEventListener("change", function(e){
+    var f = e.target.files && e.target.files[0];
+    if (!f) return;
+    var reader = new FileReader();
+    reader.onload = function(){
+      try { render(JSON.parse(reader.result)); }
+      catch(err){ alert("JSON 解析失败：" + err.message); }
+    };
+    reader.readAsText(f, "utf-8");
+  });
+  document.getElementById("toggle").addEventListener("click", function(){
+    showAnswers = !showAnswers;
+    this.classList.toggle("on", showAnswers);
+    this.textContent = showAnswers ? "隐藏答案" : "显示答案";
+    // 已渲染内容需重渲染以刷新答案解析
+    var wrapChild = wrap.querySelector(".paper");
+    if (wrapChild) { /* 保存 paper 数据并重渲染 */
+      var paperData = window.__lastData;
+      if (paperData) render(paperData);
+    }
+  });
+
+  // 记录最后渲染的数据，便于切换答案后重渲染
+  var _render = render;
+  render = function(data){ window.__lastData = data; _render(data); };
+
+  render(SAMPLE); // 初始展示示例
+})();
+</script>
+</body>
+</html>

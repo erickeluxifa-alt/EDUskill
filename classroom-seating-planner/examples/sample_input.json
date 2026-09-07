@@ -1,0 +1,17 @@
+{
+  "class_name": "高一3班（模拟）",
+  "room": {"rows": 4, "cols": 5, "blocked_seats": ["R1C5"]},
+  "students": [
+    {"id": "S01", "name": "学生甲"},
+    {"id": "S02", "name": "学生乙"},
+    {"id": "S03", "name": "学生丙"},
+    {"id": "S04", "name": "学生丁"},
+    {"id": "S05", "name": "学生戊"},
+    {"id": "S06", "name": "学生己"}
+  ],
+  "constraints": {
+    "separated_pairs": [["S01", "S02"], ["S03", "S04"]],
+    "front_row_ids": ["S01"],
+    "fixed_seats": {"S02": "R4C5"}
+  }
+}

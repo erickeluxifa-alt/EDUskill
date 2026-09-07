@@ -50,20 +50,24 @@ EDUskill
 │
 ├── 考试与评价闭环（Exam & Assessment）
 │   ├── exam-blueprint-generator             考试双向细目表
+│   ├── exam-paper-assembler                 自动组卷与试卷预览
 │   ├── exam-invigilator-planner             考场编排与监考日程
-│   ├── exam-score-analyzer*                 考后成绩与区分度诊断
+│   ├── exam-score-analyzer                  考后成绩与区分度诊断
 │   ├── exam-review-planner                  讲评课备课规划与题卡
-│   └── exam-followup-reviewer               命题质量四象限复盘与回流
+│   ├── exam-followup-reviewer               命题质量四象限复盘与回流
+│   └── assessment-moderation-auditor        成绩提交前审核与总评核验
 │
 ├── 学情、预警与支持（Student Analytics & Support）
 │   ├── student-academic-warning             学业风险多维分级预警
 │   ├── student-support-triage               学生咨询主题分流与答复
+│   ├── attendance-followup-planner          缺勤跟进队列与沟通计划
 │   ├── credit-progress-checker              培养方案学分毕业预检
 │   ├── homework-grading-analyzer            作业批量批改与学情诊断
 │   └── assignment-load-balancer             作业截止日密集度与负荷平衡
 │
 ├── 教务排程与治理（Academic Scheduling & Governance）
 │   ├── schedule-conflict-detective          排课冲突检测（教师×教室×班级）
+│   ├── classroom-seating-planner            课堂座位编排与约束核验
 │   ├── lab-reservation-scheduler            实验室预约防冲突排程
 │   ├── internship-allocation-planner        学生企业实习志愿分配
 │   └── teaching-quality-closure             教学质量整改闭环台账
@@ -86,9 +90,9 @@ EDUskill
 │
 └── 通用工具（General Tools）
     └── 视频                                 HyperFrames 视频生成
-
-* exam-score-analyzer 正在持续迭代补充
 ```
+
+**考试评价链路已闭环**：`exam-blueprint-generator`（命题细目表）→ `exam-paper-assembler`（组卷）→ `exam-invigilator-planner`（考场监考）→ `exam-score-analyzer`（成绩分析）→ `exam-review-planner`（讲评备课）→ `exam-followup-reviewer`（命题回流）→ `assessment-moderation-auditor`（成绩提交前审核）。上游产物可直接作为下游输入，无需手工搬数据。
 
 ---
 
@@ -118,9 +122,12 @@ EDUskill
 | 技能包 | 说明 |
 |--------|------|
 | exam-blueprint-generator | 生成考试双向细目表，校验知识点覆盖与难度分布 |
+| exam-paper-assembler | 按细目表自动组卷，输出学生版/教师版试卷与组卷缺口报告 |
 | exam-invigilator-planner | 自动生成考场容量编排表与监考日程 |
+| exam-score-analyzer | 逐题得分率、区分度与整卷信度诊断，输出知识点掌握度与预警名单 |
 | exam-review-planner | 按得分率分级生成讲评课备课规划与分层题卡 |
 | exam-followup-reviewer | 考后命题质量四象限分析与命题回流建议 |
+| assessment-moderation-auditor | 成绩提交前核验多项成绩、权重与考勤，发现缺失、越界与总评异常 |
 
 ### 学情、预警与支持
 
@@ -128,6 +135,7 @@ EDUskill
 |--------|------|
 | student-academic-warning | 批量学业风险多维评分与分级预警 |
 | student-support-triage | 学生咨询按主题、紧急度分流并生成回复草稿 |
+| attendance-followup-planner | 识别重复/连续缺勤，生成分级跟进队列与沟通预览 |
 | credit-progress-checker | 按培养方案逐门核对学分缺口，生成毕业预检报告 |
 | homework-grading-analyzer | 批量批改作业并输出学情诊断报告 |
 | assignment-load-balancer | 检测班级作业截止日期密集度与 7 天周负荷超载 |
@@ -137,6 +145,7 @@ EDUskill
 | 技能包 | 说明 |
 |--------|------|
 | schedule-conflict-detective | 排课冲突检测，支持教师×教室×班级三维核查 |
+| classroom-seating-planner | 按分离/前排/禁用座位约束生成座位表与冲突清单 |
 | lab-reservation-scheduler | 实验室预约无冲突排程与资源利用率统计 |
 | internship-allocation-planner | 按志愿与企业容量自动生成实习分配方案 |
 | teaching-quality-closure | 将教学检查、评教与督导发现转成分级整改台账 |
