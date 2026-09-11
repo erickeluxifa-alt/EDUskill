@@ -15,6 +15,8 @@ assert x['summary']['students'] == 3
 assert x['summary']['remediation_candidates'] == 1
 assert any('总评与上报值不一致' in s['flags'] for s in x['students'])
 assert any('待补齐成绩' in s['flags'] for s in x['students'])
+assert x['summary']['priority_counts']['P1'] == 2
+assert all('priority' in s for s in x['students'])
 PY
 cat > "$TMP/bad.json" <<'JSON'
 {"rules":{"weights":{"平时":0.5}},"students":[]}

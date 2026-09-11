@@ -41,6 +41,7 @@ EDUskill
 │   ├── edu-objective-assessment-checker     教学目标-评估一致性诊断
 │   ├── classroom-activity-designer          课堂互动活动设计包
 │   ├── course-prep-readiness-auditor        备课就绪闭环审计
+│   ├── course-material-accessibility-auditor 课程材料无障碍与可读性审核
 │   └── talent-training-auditor              人才培养方案合规审核
 │
 ├── 课堂与督导反馈（Classroom & Observation）
@@ -55,7 +56,8 @@ EDUskill
 │   ├── exam-score-analyzer                  考后成绩与区分度诊断
 │   ├── exam-review-planner                  讲评课备课规划与题卡
 │   ├── exam-followup-reviewer               命题质量四象限复盘与回流
-│   └── assessment-moderation-auditor        成绩提交前审核与总评核验
+│   ├── assessment-moderation-auditor        成绩提交前审核与总评核验
+│   └── exit-ticket-analyzer                 课后小测分层分析与补救分组
 │
 ├── 学情、预警与支持（Student Analytics & Support）
 │   ├── student-academic-warning             学业风险多维分级预警
@@ -70,6 +72,7 @@ EDUskill
 │   ├── classroom-seating-planner            课堂座位编排与约束核验
 │   ├── lab-reservation-scheduler            实验室预约防冲突排程
 │   ├── internship-allocation-planner        学生企业实习志愿分配
+│   ├── teaching-workload-calculator         教师教学工作量核算与超限校验
 │   └── teaching-quality-closure             教学质量整改闭环台账
 │
 ├── 商科专业案例套件（Business Education Suite）
@@ -107,6 +110,7 @@ EDUskill
 | edu-objective-assessment-checker | 检测教学目标与评估任务的对齐程度（布鲁姆认知层级） |
 | classroom-activity-designer | 根据教学目标生成课堂活动时间轴与教师提示 |
 | course-prep-readiness-auditor | 检查备课材料是否具备目标、活动、评价与资源闭环 |
+| course-material-accessibility-auditor | 发布讲义/公告前检查标题层级、替代文本、链接文本、表格说明与敏感信息 |
 | talent-training-auditor | 人才培养方案政策合规审核与版本差异对比 |
 
 ### 课堂与督导反馈
@@ -128,6 +132,7 @@ EDUskill
 | exam-review-planner | 按得分率分级生成讲评课备课规划与分层题卡 |
 | exam-followup-reviewer | 考后命题质量四象限分析与命题回流建议 |
 | assessment-moderation-auditor | 成绩提交前核验多项成绩、权重与考勤，发现缺失、越界与总评异常 |
+| exit-ticket-analyzer | 分析课后小测逐题作答，识别掌握分层、共性错误与下一课补救分组 |
 
 ### 学情、预警与支持
 
@@ -148,6 +153,7 @@ EDUskill
 | classroom-seating-planner | 按分离/前排/禁用座位约束生成座位表与冲突清单 |
 | lab-reservation-scheduler | 实验室预约无冲突排程与资源利用率统计 |
 | internship-allocation-planner | 按志愿与企业容量自动生成实习分配方案 |
+| teaching-workload-calculator | 按课程类型/人数档/合班/新开课与指导任务折算工作量，判定超上限与不足 |
 | teaching-quality-closure | 将教学检查、评教与督导发现转成分级整改台账 |
 
 ### 商科专业案例套件

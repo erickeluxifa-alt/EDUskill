@@ -2,7 +2,7 @@
 name: assessment-moderation-auditor
 displayName: 课程成绩审核与补救建议
 description: 面向教师、教务秘书和院系负责人，在成绩提交前审核多项成绩、权重和考勤数据，发现缺失、越界、总评异常与补救候选，输出可复核的审核报告；纯离线运行，不自动修改或提交成绩。
-version: 1.0.0
+version: 1.1.0
 author: ht
 trigger:
   - 帮我审核这门课的成绩
@@ -39,7 +39,7 @@ python3 scripts/audit_assessment.py --input examples/sample.json --strict --json
 - `review.json`：结构化审核结果，可供后续页面或教务适配层使用。
 - `review.md`：摘要、问题清单、补救候选和人工确认事项。
 
-问题分为：`data_error`（输入数据错误）、`manual_review`（需人工核验）、`remediation_candidate`（按规则建议补救，不代表最终结论）。
+问题分为：`data_error`（输入数据错误）、`manual_review`（需人工核验）、`remediation_candidate`（按规则建议补救，不代表最终结论）。每名学生增加复核优先级：`P0` 数据错误，`P1` 总评不一致或补救候选，`P2` 其他人工复核，`P3` 未发现问题；汇总中的 `priority_counts` 可供队列或页面直接使用。
 
 ## 核心规则
 1. 权重不为 1、成绩越界、重复学号、空学生记录属于输入错误；默认保留其他记录并报告，`--strict` 下直接退出。

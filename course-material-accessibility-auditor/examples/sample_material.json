@@ -1,0 +1,18 @@
+{
+  "title": "数据素养入门任务单",
+  "language": "zh-CN",
+  "sections": [
+    {"heading": "学习目标", "level": 1, "paragraphs": ["完成本任务后，你能够识别数据来源并判断其可信度。"]},
+    {"heading": "课堂任务", "level": 3, "paragraphs": ["请阅读案例，记录证据，然后与同伴比较结论。"]}
+  ],
+  "images": [
+    {"id": "figure-1", "alt": "", "decorative": false},
+    {"id": "divider", "alt": "", "decorative": true}
+  ],
+  "links": [
+    {"text": "点击这里", "url": "https://example.edu/resource"}
+  ],
+  "tables": [
+    {"caption": "", "headers": [], "rows": [["来源", "证据"]]}
+  ]
+}

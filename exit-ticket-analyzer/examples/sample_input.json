@@ -1,0 +1,15 @@
+{
+  "course": "概率论",
+  "lesson": "条件概率",
+  "questions": [
+    {"id": "Q1", "topic": "事件定义", "max_score": 1},
+    {"id": "Q2", "topic": "条件概率公式", "max_score": 1},
+    {"id": "Q3", "topic": "树状图建模", "max_score": 1}
+  ],
+  "students": [
+    {"id": "S01", "name": "示例甲", "answers": {"Q1": 1, "Q2": 0, "Q3": 0}},
+    {"id": "S02", "name": "示例乙", "answers": {"Q1": 1, "Q2": 1, "Q3": 0}},
+    {"id": "S03", "name": "示例丙", "answers": {"Q1": 1, "Q2": 1, "Q3": 1}},
+    {"id": "S04", "name": "示例丁", "answers": {"Q1": null, "Q2": 0, "Q3": 0}}
+  ]
+}

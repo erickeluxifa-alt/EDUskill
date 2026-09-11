@@ -87,17 +87,26 @@ def audit(data, strict=False):
         if not valid:
             flags.append("无有效成绩")
         issue_type = "data_error" if any("缺少学号" in x or "重复" in x or "不是数字" in x or "越界" in x for x in row_issues) else "manual_review"
-        students.append({"id": clean(sid or ""), "name": clean(name), "total": total, "attendance": attendance, "flags": flags, "issues": row_issues, "issue_type": issue_type})
-    counts = {"students": len(students), "complete": sum(s["total"] is not None for s in students), "manual_review": sum(bool(s["issues"]) for s in students), "remediation_candidates": sum("补救候选" in s["flags"] for s in students), "data_errors": len(issues) + sum(s["issue_type"] == "data_error" for s in students)}
+        if issue_type == "data_error":
+            priority = "P0"
+        elif "总评与上报值不一致" in flags or "补救候选" in flags:
+            priority = "P1"
+        elif row_issues:
+            priority = "P2"
+        else:
+            priority = "P3"
+        students.append({"id": clean(sid or ""), "name": clean(name), "total": total, "attendance": attendance, "flags": flags, "issues": row_issues, "issue_type": issue_type, "priority": priority})
+    counts = {"students": len(students), "complete": sum(s["total"] is not None for s in students), "manual_review": sum(bool(s["issues"]) for s in students), "remediation_candidates": sum("补救候选" in s["flags"] for s in students), "data_errors": len(issues) + sum(s["issue_type"] == "data_error" for s in students), "priority_counts": {p: sum(s["priority"] == p for s in students) for p in ("P0", "P1", "P2", "P3")}}
     return {"course": clean(data.get("course", "未命名课程")), "rules": {"pass_mark": pass_mark, "attendance_min": attendance_min, "weights": weights}, "summary": counts, "issues": issues, "students": students}
 
 
 def markdown(result):
     s = result["summary"]
-    lines = [f"# 成绩审核报告：{html.escape(result['course'])}", "", f"审核人数：{s.get('students', 0)}；已算总评：{s.get('complete', 0)}；需人工复核：{s.get('manual_review', 0)}；补救候选：{s.get('remediation_candidates', 0)}。", "", "## 问题清单", "| 学号 | 学生 | 总评 | 标记 | 问题 |", "|---|---|---:|---|---|"]
+    priority_counts = s.get("priority_counts", {})
+    lines = [f"# 成绩审核报告：{html.escape(result['course'])}", "", f"审核人数：{s.get('students', 0)}；已算总评：{s.get('complete', 0)}；需人工复核：{s.get('manual_review', 0)}；补救候选：{s.get('remediation_candidates', 0)}。", f"复核优先级：P0 数据错误 {priority_counts.get('P0', 0)}；P1 高优先 {priority_counts.get('P1', 0)}；P2 常规复核 {priority_counts.get('P2', 0)}；P3 无问题 {priority_counts.get('P3', 0)}。", "", "## 问题清单", "| 优先级 | 学号 | 学生 | 总评 | 标记 | 问题 |", "|---|---|---|---:|---|---|"]
     for st in result["students"]:
         if st["issues"]:
-            lines.append(f"| {clean(st['id'])} | {clean(st['name'])} | {st['total'] if st['total'] is not None else '-'} | {clean(', '.join(st['flags']))} | {clean('；'.join(st['issues']))} |")
+            lines.append(f"| {st.get('priority', 'P2')} | {clean(st['id'])} | {clean(st['name'])} | {st['total'] if st['total'] is not None else '-'} | {clean(', '.join(st['flags']))} | {clean('；'.join(st['issues']))} |")
     if not any(st["issues"] for st in result["students"]): lines.append("| - | - | - | 无 | 未发现规则问题 |")
     lines += ["", "## 人工确认", "- 核对课程成绩政策、补救/补考资格和考勤口径。", "- 确认上报总评与计算总评差异后，再执行教务系统提交。", "- 本报告使用离线输入，不代表正式成绩结论。"]
     return "\n".join(lines) + "\n"

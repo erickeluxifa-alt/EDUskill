@@ -1,0 +1,60 @@
+{
+  "term": "2026-2027-1",
+  "rules": {
+    "standard_workload": 320,
+    "min_workload": 160,
+    "max_workload": 480,
+    "high_ratio": 1.2,
+    "course_type_coefficient": {
+      "理论": 1.0,
+      "实验": 0.8,
+      "实践": 0.6,
+      "体育": 0.9,
+      "在线": 0.7
+    },
+    "supervision_hours": {
+      "thesis": 18,
+      "internship": 6,
+      "competition": 10,
+      "graduate": 30
+    }
+  },
+  "teachers": [
+    { "id": "T01", "name": "教师甲", "title": "教授", "department": "计算机学院" },
+    { "id": "T02", "name": "教师乙", "title": "副教授", "department": "计算机学院" },
+    { "id": "T03", "name": "教师丙", "title": "讲师", "department": "商学院" },
+    { "id": "T04", "name": "教师丁", "title": "助教", "department": "商学院" },
+    { "id": "T05", "name": "教师戊", "title": "讲师", "department": "体育部" },
+    { "id": "T06", "name": "教师己", "title": "副教授", "department": "计算机学院" }
+  ],
+  "courses": [
+    { "course_id": "C101", "name": "数据结构", "teacher_id": "T01", "type": "理论", "hours": 64, "students": 168, "merged_classes": 3, "is_new": false },
+    { "course_id": "C102", "name": "算法设计与分析", "teacher_id": "T01", "type": "理论", "hours": 48, "students": 88, "is_new": true },
+    { "course_id": "C103", "name": "操作系统实验", "teacher_id": "T01", "type": "实验", "hours": 32, "students": 45 },
+    { "course_id": "C201", "name": "计算机网络", "teacher_id": "T02", "type": "理论", "hours": 48, "students": 120, "merged_classes": 2 },
+    { "course_id": "C202", "name": "网络工程实践", "teacher_id": "T02", "type": "实践", "hours": 32, "students": 40 },
+    { "course_id": "C301", "name": "管理学原理", "teacher_id": "T03", "type": "理论", "hours": 48, "students": 75 },
+    { "course_id": "C302", "name": "创业基础（在线）", "teacher_id": "T03", "type": "在线", "hours": 32, "students": 260 },
+    { "course_id": "C401", "name": "会计学基础", "teacher_id": "T04", "type": "理论", "hours": 32, "students": 55 },
+    { "course_id": "C501", "name": "大学体育", "teacher_id": "T05", "type": "体育", "hours": 64, "students": 36 },
+    { "course_id": "C502", "name": "专项训练", "teacher_id": "T05", "type": "户外", "hours": 24, "students": 30 },
+    { "course_id": "C701", "name": "编译原理", "teacher_id": "T06", "type": "理论", "hours": 64, "students": 200 },
+    { "course_id": "C702", "name": "软件工程", "teacher_id": "T06", "type": "理论", "hours": 64, "students": 85, "merged_classes": 2 },
+    { "course_id": "C703", "name": "程序设计实验", "teacher_id": "T06", "type": "实验", "hours": 48, "students": 50 },
+    { "course_id": "C601", "name": "未登记教师课程", "teacher_id": "T99", "type": "理论", "hours": 32, "students": 50 },
+    { "course_id": "C602", "name": "学时填报异常课程", "teacher_id": "T04", "type": "理论", "hours": 0, "students": 50 },
+    { "course_id": "C603", "name": "人数缺失课程", "teacher_id": "T04", "type": "理论", "hours": 16 }
+  ],
+  "supervisions": [
+    { "teacher_id": "T01", "kind": "thesis", "count": 8 },
+    { "teacher_id": "T01", "kind": "graduate", "count": 3 },
+    { "teacher_id": "T02", "kind": "thesis", "count": 6 },
+    { "teacher_id": "T02", "kind": "competition", "count": 2 },
+    { "teacher_id": "T03", "kind": "internship", "count": 18 },
+    { "teacher_id": "T05", "kind": "competition", "count": 1 },
+    { "teacher_id": "T06", "kind": "thesis", "count": 12 },
+    { "teacher_id": "T06", "kind": "graduate", "count": 4 },
+    { "teacher_id": "T03", "kind": "volunteer", "count": 4 },
+    { "teacher_id": "T04", "kind": "thesis", "count": -1 }
+  ]
+}
