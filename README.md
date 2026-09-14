@@ -65,7 +65,9 @@ EDUskill
 │   ├── attendance-followup-planner          缺勤跟进队列与沟通计划
 │   ├── credit-progress-checker              培养方案学分毕业预检
 │   ├── homework-grading-analyzer            作业批量批改与学情诊断
-│   └── assignment-load-balancer             作业截止日密集度与负荷平衡
+│   ├── assignment-load-balancer             作业截止日密集度与负荷平衡
+│   ├── family-communication-rehearsal      家校沟通事实整理与预演
+│   └── student-group-project-role-balancer  学生项目小组角色均衡分配
 │
 ├── 教务排程与治理（Academic Scheduling & Governance）
 │   ├── schedule-conflict-detective          排课冲突检测（教师×教室×班级）
@@ -73,7 +75,8 @@ EDUskill
 │   ├── lab-reservation-scheduler            实验室预约防冲突排程
 │   ├── internship-allocation-planner        学生企业实习志愿分配
 │   ├── teaching-workload-calculator         教师教学工作量核算与超限校验
-│   └── teaching-quality-closure             教学质量整改闭环台账
+│   ├── teaching-quality-closure             教学质量整改闭环台账
+│   └── substitute-coverage-planner          教师缺勤代课与调课方案生成
 │
 ├── 商科专业案例套件（Business Education Suite）
 │   ├── business-teaching-case-generator     通用商科教学案例生成
@@ -144,6 +147,8 @@ EDUskill
 | credit-progress-checker | 按培养方案逐门核对学分缺口，生成毕业预检报告 |
 | homework-grading-analyzer | 批量批改作业并输出学情诊断报告 |
 | assignment-load-balancer | 检测班级作业截止日期密集度与 7 天周负荷超载 |
+| family-communication-rehearsal | 将匿名化学生表现事实整理为家校沟通议程、问题与行动项预览 |
+| student-group-project-role-balancer | 按能力与角色偏好生成项目小组分工，识别技能缺口与负担不均 |
 
 ### 教务排程与治理
 
@@ -155,6 +160,7 @@ EDUskill
 | internship-allocation-planner | 按志愿与企业容量自动生成实习分配方案 |
 | teaching-workload-calculator | 按课程类型/人数档/合班/新开课与指导任务折算工作量，判定超上限与不足 |
 | teaching-quality-closure | 将教学检查、评教与督导发现转成分级整改台账 |
+| substitute-coverage-planner | 根据教师资质、忙闲、教室容量和班级冲突生成代课/调课候选 |
 
 ### 商科专业案例套件
 

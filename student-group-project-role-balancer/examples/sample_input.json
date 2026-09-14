@@ -1,0 +1,17 @@
+{
+  "project": {"name": "校园节能方案", "group_count": 2, "group_size": 3},
+  "roles": [
+    {"id": "research", "name": "资料研究", "capacity": 1, "skills": ["research"]},
+    {"id": "build", "name": "方案实现", "capacity": 1, "skills": ["technical"]},
+    {"id": "present", "name": "展示汇报", "capacity": 1, "skills": ["communication"]}
+  ],
+  "students": [
+    {"id": "S001", "name": "学生甲", "skills": ["research"], "preferred_roles": ["research"]},
+    {"id": "S002", "name": "学生乙", "skills": ["technical"], "preferred_roles": ["build"]},
+    {"id": "S003", "name": "学生丙", "skills": ["communication"], "preferred_roles": ["present"]},
+    {"id": "S004", "name": "学生丁", "skills": ["research", "communication"], "preferred_roles": ["present"]},
+    {"id": "S005", "name": "学生戊", "skills": ["technical", "research"], "preferred_roles": ["build"]},
+    {"id": "S006", "name": "学生己", "skills": ["communication", "technical"], "preferred_roles": ["present"]}
+  ],
+  "rules": {"max_same_skill_in_group": 2, "avoid_same_role_preference": false}
+}
