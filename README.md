@@ -40,6 +40,7 @@ EDUskill
 │   ├── teaching-progress-planner            逐周教学进度日历编制
 │   ├── edu-objective-assessment-checker     教学目标-评估一致性诊断
 │   ├── classroom-activity-designer          课堂互动活动设计包
+│   ├── lesson-runbook-builder               课堂授课运行单生成
 │   ├── course-prep-readiness-auditor        备课就绪闭环审计
 │   ├── course-material-accessibility-auditor 课程材料无障碍与可读性审核
 │   └── talent-training-auditor              人才培养方案合规审核
@@ -112,6 +113,7 @@ EDUskill
 | teaching-progress-planner | 按校历自动生成逐周教学进度表，输出 MD/JSON/CSV |
 | edu-objective-assessment-checker | 检测教学目标与评估任务的对齐程度（布鲁姆认知层级） |
 | classroom-activity-designer | 根据教学目标生成课堂活动时间轴与教师提示 |
+| lesson-runbook-builder | 将教案与课程目标转换为含时间轴、形成性检查和异常预案的课堂授课运行单 |
 | course-prep-readiness-auditor | 检查备课材料是否具备目标、活动、评价与资源闭环 |
 | course-material-accessibility-auditor | 发布讲义/公告前检查标题层级、替代文本、链接文本、表格说明与敏感信息 |
 | talent-training-auditor | 人才培养方案政策合规审核与版本差异对比 |

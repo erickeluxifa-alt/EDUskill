@@ -1,0 +1,11 @@
+{
+  "name": "lesson-runbook-builder",
+  "displayName": "课堂授课运行单生成器",
+  "version": "1.0.0",
+  "description": "将课程目标与课堂活动转换为可执行的课堂时间轴、形成性检查和异常预案。",
+  "author": "ht",
+  "entrypoint": "scripts/build_runbook.py",
+  "capabilities": ["lesson_runbook_generation", "formative_check_planning", "contingency_preview"],
+  "offline": true,
+  "sideEffects": false
+}
