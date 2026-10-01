@@ -1,0 +1,62 @@
+{
+  "title": "六年级数学随堂测验·第3单元",
+  "subject": "数学",
+  "date": "2026-08-14",
+  "grade_level": "小学六年级",
+  "questions": [
+    {
+      "id": 1,
+      "type": "single_choice",
+      "points": 4,
+      "knowledge_point": "有理数",
+      "stem": "下列各数中，属于正整数的是？",
+      "options": {"A":"-2","B":"0","C":"3.14","D":"+7"},
+      "answer": "D"
+    },
+    {
+      "id": 2,
+      "type": "multi_choice",
+      "points": 5,
+      "knowledge_point": "几何基础",
+      "stem": "下面哪些图形是轴对称图形？（多选）",
+      "options": {"A":"长方形","B":"平行四边形","C":"圆","D":"等腰三角形"},
+      "answer": "ACD"
+    },
+    {
+      "id": 3,
+      "type": "true_false",
+      "points": 3,
+      "knowledge_point": "代数运算",
+      "stem": "-1 的绝对值等于 1。",
+      "answer": "T"
+    },
+    {
+      "id": 4,
+      "type": "fill_blank",
+      "points": 5,
+      "knowledge_point": "方程与不等式",
+      "stem": "方程 2x + 3 = 11 的解为 x = ___。",
+      "accepted_answers": ["4"],
+      "allow_partial_credit": false,
+      "partial_keywords": []
+    },
+    {
+      "id": 5,
+      "type": "numeric",
+      "points": 5,
+      "knowledge_point": "计算能力",
+      "stem": "一个圆形花坛周长为 31.4 米，半径约为多少米？（π取3.14，保留两位小数）",
+      "answer": "5.00",
+      "tolerance": 0.05
+    },
+    {
+      "id": 6,
+      "type": "short_answer",
+      "points": 8,
+      "knowledge_point": "应用题建模",
+      "stem": "小明用50元买了若干本笔记本和铅笔。已知每本笔记本12元、每支铅笔3元，他一共买了7件文具且钱刚好花完，求分别买了多少本笔记本和多少支铅笔。",
+      "accepted_answers": ["笔记本4本 铅笔9支"],
+      "partial_keywords": ["x=4","y=9","4","9","二元一次","代入消元"]
+    }
+  ]
+}

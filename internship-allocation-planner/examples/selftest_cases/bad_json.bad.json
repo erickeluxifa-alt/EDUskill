@@ -1,0 +1,10 @@
+{
+  "students": [
+    {"name": "甲", "options": ["A单位"]}
+  ],
+  "units": [
+    {"name": "A单位", "capacity": 5}
+  ],
+  "students_extra": true
+}
+{ 这不是合法JSON

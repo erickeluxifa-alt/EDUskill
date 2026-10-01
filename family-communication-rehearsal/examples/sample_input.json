@@ -1,0 +1,12 @@
+{
+  "class_name": "八年级2班",
+  "student": {"id": "S001", "name": "示例甲"},
+  "context": {"channel": "phone", "purpose": "阶段性学习反馈"},
+  "observations": [
+    {"date": "2026-09-08", "domain": "作业", "fact": "本周4次作业中2次按时提交，另2次尚未提交", "source": "作业记录"},
+    {"date": "2026-09-10", "domain": "课堂", "fact": "小组讨论中完成了资料整理并向组员说明要点", "source": "课堂观察"}
+  ],
+  "strengths": ["资料整理较细致", "在小组任务中愿意承担明确角色"],
+  "support_options": ["提供一周任务清单", "在下次课前安排一次5分钟任务确认"],
+  "requested_actions": ["共同确认本周补交顺序", "下周复核任务清单使用情况"]
+}

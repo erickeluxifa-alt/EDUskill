@@ -1,0 +1,21 @@
+{
+ "resources": [
+  {
+   "id": "A",
+   "capacity": 60,
+   "equipment": [
+    "离心机"
+   ]
+  }
+ ],
+ "requests": [
+  {
+   "id": "r",
+   "students": 5,
+   "date": "2026-09-09",
+   "equipment": [
+    "电子显微镜"
+   ]
+  }
+ ]
+}

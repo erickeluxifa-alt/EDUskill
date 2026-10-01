@@ -1,0 +1,46 @@
+{
+ "resources": [
+  {
+   "id": "A",
+   "type": "通用",
+   "capacity": 60
+  },
+  {
+   "id": "B",
+   "type": "通用",
+   "capacity": 40
+  },
+  {
+   "id": "C",
+   "type": "机房",
+   "capacity": 30
+  }
+ ],
+ "requests": [
+  {
+   "id": "r1",
+   "course": "物理实验",
+   "students": 35,
+   "teacher": "王",
+   "date": "2026-09-09",
+   "slot": "08:00-10:00"
+  },
+  {
+   "id": "r2",
+   "course": "化学实验",
+   "students": 30,
+   "teacher": "陈",
+   "date": "2026-09-09",
+   "slot": "10:10-12:00"
+  },
+  {
+   "id": "r3",
+   "course": "计算机实验",
+   "students": "25",
+   "teacher": "李",
+   "date": "2026-09-09",
+   "slot": "14:00-16:00",
+   "res_type": "机房"
+  }
+ ]
+}

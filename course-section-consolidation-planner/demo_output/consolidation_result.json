@@ -1,0 +1,53 @@
+{
+  "summary": {
+    "total": 2,
+    "recommended": 1,
+    "review": 0,
+    "blocked": 1
+  },
+  "results": [
+    {
+      "candidate_id": "PLAN-AB",
+      "status": "recommended",
+      "score": 84,
+      "merged_enrollment": 22,
+      "effective_capacity": 40,
+      "utilization": 0.55,
+      "blockers": [],
+      "risks": [],
+      "affected_students": [
+        "S003"
+      ],
+      "confirmation_items": [
+        "verify roster snapshot freshness",
+        "confirm room and timetable",
+        "confirm teacher workload",
+        "review student impact before SIS action"
+      ]
+    },
+    {
+      "candidate_id": "PLAN-AC",
+      "status": "blocked",
+      "score": 57,
+      "merged_enrollment": 38,
+      "effective_capacity": 35,
+      "utilization": 1.0857,
+      "blockers": [
+        "teaching progress gap exceeds policy",
+        "capacity exceeded by 3"
+      ],
+      "risks": [],
+      "affected_students": [
+        "S001",
+        "S002"
+      ],
+      "confirmation_items": [
+        "verify roster snapshot freshness",
+        "confirm room and timetable",
+        "confirm teacher workload",
+        "review student impact before SIS action"
+      ]
+    }
+  ],
+  "data_issues": []
+}

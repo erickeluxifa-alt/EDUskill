@@ -1,0 +1,11 @@
+{
+  "entryFile": "index.html",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration": 120,
+  "outputFormat": "mp4",
+  "audioSources": [
+    { "src": "narration.wav", "mix": true }
+  ]
+}

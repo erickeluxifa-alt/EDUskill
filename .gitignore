@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+.DS_Store
+*.log
+*.tmp
+.env
+*_managed.json
+
+# 自测运行时产生的中间产物（非交付内容）
+tests/tmp/
+**/tests/tmp/
+
+# 过程产物（测试记录/效果评估/日报），不随技能公开发布
+**/测试记录.md
+**/效果评估.md
+**/*日报*.md
+
+# 第三方 / 非本人开发的技能目录在本地 .git/info/exclude 中排除
+
+# 含内部二进制/内部端点，不随公开仓库发布
+ku-doc-manage/

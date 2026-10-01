@@ -1,0 +1,11 @@
+{
+ "resources": [
+  {
+   "id": "A",
+   "capacity": 60
+  }
+ ],
+ "requests": {
+  "a": 1
+ }
+}

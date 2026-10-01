@@ -1,0 +1,14 @@
+{
+  "milestones": [
+    {"id":"M-001","project":"智能教学研究","milestone":"完成访谈编码","owner":"李同学","due_date":"2026-08-28","status":"in_progress","progress":0.65},
+    {"id":"M-002","project":"智能教学研究","milestone":"提交伦理审查补充材料","owner":"王同学","due_date":"2026-09-01","status":"blocked","progress":0.4,"blocked_by":["M-001"]},
+    {"id":"M-003","project":"智能教学研究","milestone":"形成阶段报告","owner":"李同学","due_date":"2026-09-03","status":"planned","progress":0.2},
+    {"id":"M-004","project":"智能教学研究","milestone":"整理数据字典","owner":"李同学","due_date":"2026-09-05","status":"planned"},
+    {"id":"M-005","project":"产教协同课题","milestone":"完成企业访谈","owner":"赵同学","due_date":"2026-09-10","status":"in_progress","progress":0.7},
+    {"id":"M-006","project":"产教协同课题","milestone":"完成案例初稿","owner":"赵同学","due_date":"2026-09-12","status":"in_progress","progress":0.5},
+    {"id":"M-007","project":"产教协同课题","milestone":"导师审核","owner":"导师","due_date":"2026-09-14","status":"planned","progress":0.0},
+    {"id":"M-008","project":"产教协同课题","milestone":"归档访谈材料","owner":"赵同学","due_date":"2026-09-15","status":"planned","progress":0.1},
+    {"id":"M-010","project":"产教协同课题","milestone":"准备结题材料目录","owner":"赵同学","due_date":"2026-09-18","status":"planned","progress":0.0},
+    {"id":"M-009","project":"旧项目","milestone":"已完成节点","owner":"周同学","due_date":"2026-08-01","status":"done","progress":1.0}
+  ]
+}

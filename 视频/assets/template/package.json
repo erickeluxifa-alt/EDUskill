@@ -1,0 +1,10 @@
+{
+  "name": "hyperframes-video",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "npx --yes hyperframes@0.6.56 lint",
+    "render": "npx --yes hyperframes@0.6.56 render",
+    "check": "npm run lint && npm run render"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "students": [
+    {
+      "student_id": "2024001",
+      "name": "张明",
+      "grade": "大二",
+      "major": "计算机科学与技术",
+      "gpa": 1.6,
+      "fail_courses": 2,
+      "required_credits": 160,
+      "completed_credits": 70,
+      "failed_credits": 24,
+      "total_class_sessions": 96,
+      "absent_sessions": 28,
+      "discipline_violations": 0,
+      "psychological_flag": false,
+      "note": "本学期成绩下滑明显"
+    },
+    {
+      "student_id": "2024002",
+      "name": "李华",
+      "grade": "大三",
+      "major": "软件工程",
+      "gpa": 3.2,
+      "fail_courses": 0,
+      "required_credits": 160,
+      "completed_credits": 130,
+      "failed_credits": 0,
+      "total_class_sessions": 96,
+      "absent_sessions": 5,
+      "discipline_violations": 0,
+      "psychological_flag": false
+    },
+    {
+      "student_id": "2024003",
+      "name": "王芳",
+      "grade": "大二",
+      "major": "数据科学",
+      "gpa": 2.3,
+      "fail_courses": 1,
+      "required_credits": 160,
+      "completed_credits": 75,
+      "failed_credits": 12,
+      "total_class_sessions": 80,
+      "absent_sessions": 18,
+      "discipline_violations": 1,
+      "psychological_flag": true
+    },
+    {
+      "student_id": "2024004",
+      "name": "赵磊",
+      "grade": "大一",
+      "major": "人工智能",
+      "gpa": 1.2,
+      "fail_courses": 4,
+      "required_credits": 160,
+      "completed_credits": 35,
+      "failed_credits": 48,
+      "total_class_sessions": 100,
+      "absent_sessions": 45,
+      "discipline_violations": 2,
+      "psychological_flag": true
+    },
+    {
+      "student_id": "2024005",
+      "name": "陈静",
+      "grade": "大四",
+      "major": "信息安全",
+      "gpa": 3.6,
+      "fail_courses": 0,
+      "required_credits": 160,
+      "completed_credits": 158,
+      "failed_credits": 0,
+      "total_class_sessions": 64,
+      "absent_sessions": 2
+    }
+  ]
+}

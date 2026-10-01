@@ -1,0 +1,29 @@
+{
+  "course": {
+    "name": "数据结构",
+    "code": "CS201",
+    "total_hours": 56,
+    "weekly_hours": 4
+  },
+  "semester": {
+    "start_date": "2026-09-07",
+    "total_weeks": 18,
+    "exam_weeks": [17, 18],
+    "holidays": [
+      { "weeks": [4, 5], "note": "国庆和中秋节" }
+    ]
+  },
+  "units": [
+    { "name": "绪论", "hours": 4 },
+    { "name": "线性表", "hours": 8 },
+    { "name": "栈和队列", "hours": 6 },
+    { "name": "串和数组", "hours": 6 },
+    { "name": "树与二叉树", "hours": 8 },
+    { "name": "图", "hours": 4 },
+    { "name": "排序", "hours": 4 },
+    { "name": "实验一：线性表基本操作", "hours": 4 },
+    { "name": "实验二：栈与队列应用", "hours": 4 },
+    { "name": "实验三：树的遍历", "hours": 4 },
+    { "name": "实验四：排序综合", "hours": 4 }
+  ]
+}

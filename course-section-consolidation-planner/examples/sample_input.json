@@ -1,0 +1,21 @@
+{
+  "policy": {
+    "max_progress_gap": 1,
+    "allow_cross_campus": false,
+    "review_score_below": 75
+  },
+  "sections": [
+    {"id":"SEC-A","course_code":"CS101","enrollment":12,"capacity":40,"timeslots":["Mon-1-2"],"progress_week":4,"language":"zh","campus":"main","teacher_id":"T01","teacher_load":8,"room_id":"R101"},
+    {"id":"SEC-B","course_code":"CS101","enrollment":10,"capacity":40,"timeslots":["Wed-1-2"],"progress_week":4,"language":"zh","campus":"main","teacher_id":"T02","teacher_load":10,"room_id":"R102"},
+    {"id":"SEC-C","course_code":"CS101","enrollment":26,"capacity":35,"timeslots":["Fri-1-2"],"progress_week":6,"language":"zh","campus":"main","teacher_id":"T03","teacher_load":12,"room_id":"R103"}
+  ],
+  "students": [
+    {"id":"S001","section_id":"SEC-A","external_timeslots":[]},
+    {"id":"S002","section_id":"SEC-A","external_timeslots":["Wed-1-2"]},
+    {"id":"S003","section_id":"SEC-B","external_timeslots":[]}
+  ],
+  "candidates": [
+    {"id":"PLAN-AB","section_ids":["SEC-A","SEC-B"],"target_section_id":"SEC-A","room_capacity":40},
+    {"id":"PLAN-AC","section_ids":["SEC-A","SEC-C"],"target_section_id":"SEC-C","room_capacity":35}
+  ]
+}

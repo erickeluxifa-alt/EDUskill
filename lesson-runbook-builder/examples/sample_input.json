@@ -1,0 +1,39 @@
+{
+  "course": "概率论",
+  "lesson": "条件概率",
+  "duration_minutes": 45,
+  "audience": "大一理工科学生",
+  "class_size": 40,
+  "objectives": [
+    "能解释条件概率的含义",
+    "能使用公式完成基础计算"
+  ],
+  "activities": [
+    {
+      "name": "情境导入：抽签结果会改变判断吗",
+      "minutes": 5,
+      "mode": "individual_pair",
+      "student_output": "写下一个初步判断并与同伴比较"
+    },
+    {
+      "name": "概念建模与例题",
+      "minutes": 15,
+      "mode": "mini_lesson",
+      "student_output": "完成公式要素标注"
+    },
+    {
+      "name": "分层练习",
+      "minutes": 15,
+      "mode": "group_practice",
+      "student_output": "提交一道基础题和一道变式题"
+    },
+    {
+      "name": "出口条",
+      "minutes": 10,
+      "mode": "individual",
+      "student_output": "写出条件概率公式并说明一个使用条件"
+    }
+  ],
+  "resources": ["投影课件", "练习单"],
+  "constraints": ["学生已学习事件与概率基础"]
+}

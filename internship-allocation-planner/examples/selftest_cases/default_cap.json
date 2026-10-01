@@ -1,0 +1,15 @@
+{
+  "students": [
+    {"name": "s01", "options": ["A单位"]},
+    {"name": "s02", "options": ["A单位"]},
+    {"name": "s03", "options": ["A单位"]},
+    {"name": "s04", "options": ["A单位"]},
+    {"name": "s05", "options": ["A单位"]},
+    {"name": "s06", "options": ["A单位"]},
+    {"name": "s07", "options": ["A单位"]},
+    {"name": "s08", "options": ["A单位"]}
+  ],
+  "units": [
+    {"name": "A单位"}
+  ]
+}

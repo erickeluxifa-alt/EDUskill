@@ -1,0 +1,12 @@
+{
+  "units": [
+    {"name": "A单位", "capacity": 5, "windows": ["w1"]}
+  ],
+  "windows": [
+    {"id": "w1", "label": "第1-4周"},
+    {"id": "w2", "label": "第5-8周"}
+  ],
+  "assignments": [
+    {"student": "甲", "unit": "A单位", "window": "w2"}
+  ]
+}

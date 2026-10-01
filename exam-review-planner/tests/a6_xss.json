@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "exam": "<script>考试名</script>",
+    "course": "<script>课程</script>",
+    "class_name": "初二(3)班",
+    "date": "2026-08-25",
+    "total_marks": 100,
+    "pass_rate": 0.6,
+    "excellent_rate": 0.85,
+    "low_rate": 0.3,
+    "version": "1.0.0"
+  },
+  "questions": [
+    {
+      "id": "1",
+      "marks": 10,
+      "kp": "<script>alert(1)</script>",
+      "p": 0.3,
+      "text": "<img src=x onerror=alert(2)>题干"
+    }
+  ],
+  "students": [
+    {
+      "sid": "S9",
+      "name": "<b>注入</b>",
+      "total": 25
+    }
+  ]
+}

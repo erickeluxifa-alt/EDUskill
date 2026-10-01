@@ -1,0 +1,39 @@
+{
+ "resources": [
+  {
+   "id": "X1",
+   "capacity": 60
+  },
+  {
+   "id": "X2",
+   "capacity": 60
+  }
+ ],
+ "requests": [
+  {
+   "id": "1",
+   "students": 20,
+   "teacher": "张伟",
+   "date": "2026-09-09",
+   "slot": "08:00-10:00"
+  },
+  {
+   "id": "2",
+   "students": 20,
+   "teacher": "张伟",
+   "date": "2026-09-09",
+   "slot": "08:00-10:00"
+  },
+  {
+   "id": "3",
+   "students": 20,
+   "teacher": "张伟",
+   "date": "2026-09-09",
+   "slot": "08:00-10:00"
+  }
+ ],
+ "rules": {
+  "teacher_conflict": false,
+  "max_per_resource_slot": 3
+ }
+}

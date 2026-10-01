@@ -1,0 +1,1 @@
+{"exams": [{"course": "高数", "date": "2026-07-02", "slot": "上午", "classes": [{"name": "c1", "count": 5}]}], "rooms": [{"id": "A1", "capacity": 40}], "invigilators": [{"name": "张明", "teach_classes": ["c2"]}, {"name": "张明", "teach_classes": ["c3"]}], "rules": {}}

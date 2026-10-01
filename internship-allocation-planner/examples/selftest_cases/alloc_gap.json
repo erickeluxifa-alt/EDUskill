@@ -1,0 +1,10 @@
+{
+  "students": [
+    {"name": "甲", "options": ["A单位"]},
+    {"name": "乙", "options": ["A单位"]},
+    {"name": "丙", "options": ["A单位"]}
+  ],
+  "units": [
+    {"name": "A单位", "capacity": 2}
+  ]
+}

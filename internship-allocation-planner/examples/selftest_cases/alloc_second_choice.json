@@ -1,0 +1,11 @@
+{
+  "students": [
+    {"name": "李毅", "options": ["云智科技", "星海数据"]},
+    {"name": "万婷", "options": ["云智科技", "拓普自动化"]}
+  ],
+  "units": [
+    {"name": "云智科技", "capacity": 1},
+    {"name": "星海数据", "capacity": 1},
+    {"name": "拓普自动化", "capacity": 1}
+  ]
+}

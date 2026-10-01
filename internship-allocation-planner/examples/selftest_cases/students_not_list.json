@@ -1,0 +1,6 @@
+{
+  "students": "张三",
+  "units": [
+    {"name": "A单位", "capacity": 5}
+  ]
+}

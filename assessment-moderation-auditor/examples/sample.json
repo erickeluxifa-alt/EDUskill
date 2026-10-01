@@ -1,0 +1,9 @@
+{
+  "course": "数据库原理（模拟数据）",
+  "rules": {"pass_mark": 60, "attendance_min": 70, "weights": {"平时": 0.3, "期末": 0.7}},
+  "students": [
+    {"id": "S001", "name": "示例甲", "scores": {"平时": 78, "期末": 62}, "attendance": 92, "reported_total": 68},
+    {"id": "S002", "name": "示例乙", "scores": {"平时": 55, "期末": 57}, "attendance": 68},
+    {"id": "S003", "name": "示例丙", "scores": {"平时": 88}, "attendance": 95}
+  ]
+}

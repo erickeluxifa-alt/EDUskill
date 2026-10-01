@@ -1,0 +1,21 @@
+{
+  "date_range": "2026-09-14~2026-09-18",
+  "absences": [
+    {"teacher_id":"T01","course_id":"C01","course_name":"高等数学","class_id":"CL1","subject":"数学","slot":"Mon-1","room_id":"R1","students":42},
+    {"teacher_id":"T03","course_id":"C02","course_name":"大学物理实验","class_id":"CL2","subject":"物理","slot":"Tue-2","room_id":"LAB1","students":28}
+  ],
+  "teachers": [
+    {"id":"T01","name":"教师甲","subjects":["数学"],"available_slots":["Wed-2"],"max_daily_load":4,"existing_load":{"Wed":1}},
+    {"id":"T02","name":"教师乙","subjects":["数学"],"available_slots":["Mon-1","Wed-2"],"max_daily_load":4,"existing_load":{"Mon":2,"Wed":2}},
+    {"id":"T03","name":"教师丙","subjects":["物理"],"available_slots":[],"max_daily_load":3,"existing_load":{"Tue":2}},
+    {"id":"T04","name":"教师丁","subjects":["物理"],"available_slots":["Thu-3"],"max_daily_load":3,"existing_load":{"Thu":1}}
+  ],
+  "rooms": [
+    {"id":"R1","capacity":50,"available_slots":["Mon-1","Wed-2"]},
+    {"id":"R2","capacity":60,"available_slots":["Wed-2","Thu-3"]},
+    {"id":"LAB1","capacity":30,"available_slots":["Tue-2","Thu-3"]}
+  ],
+  "class_busy": {"CL1":["Tue-1"],"CL2":["Wed-2"]},
+  "makeup_slots": ["Wed-2","Thu-3"],
+  "rules": {"allow_cross_subject":false,"max_candidates":3}
+}

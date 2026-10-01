@@ -1,0 +1,10 @@
+{
+  "students": [
+    {"name": "<script>alert(1)</script>", "class": "报表|注入", "options": ["危险|单位", "正常单位"]},
+    {"name": "正常同学", "options": ["正常单位"]}
+  ],
+  "units": [
+    {"name": "危险|单位", "capacity": 1},
+    {"name": "正常单位", "capacity": 5}
+  ]
+}

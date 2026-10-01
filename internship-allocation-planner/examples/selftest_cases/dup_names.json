@@ -1,0 +1,9 @@
+{
+  "students": [
+    {"name": "李明", "class": "计科1班", "options": ["A单位"]},
+    {"name": "李明", "class": "计科2班", "options": ["A单位"]}
+  ],
+  "units": [
+    {"name": "A单位", "capacity": 2}
+  ]
+}

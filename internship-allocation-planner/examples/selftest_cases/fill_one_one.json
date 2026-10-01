@@ -1,0 +1,8 @@
+{
+  "students": [
+    {"name": "唯一的娃", "options": ["唯一单位"]}
+  ],
+  "units": [
+    {"name": "唯一单位", "capacity": 9}
+  ]
+}

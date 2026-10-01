@@ -1,0 +1,9 @@
+{
+  "students": [
+    {"name": "甲", "major": "计算机", "options": ["A单位"]}
+  ],
+  "units": [
+    {"name": "A单位", "capacity": 5, "majors": ["自动化"]}
+  ],
+  "rules": {"major_strict": true}
+}

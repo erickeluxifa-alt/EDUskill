@@ -1,0 +1,17 @@
+{
+ "resources": [
+  {
+   "id": "A",
+   "type": "物理",
+   "capacity": 60
+  }
+ ],
+ "requests": [
+  {
+   "id": "r",
+   "students": 5,
+   "date": "2026-09-09",
+   "res_type": "化工"
+  }
+ ]
+}
